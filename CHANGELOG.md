@@ -4,6 +4,12 @@ Every change to a definition, threshold or universe in `RULE.md` after its first
 is logged here with the date, the reason, and whether any data had been seen. Results
 are reported under both the old and new versions.
 
+## v1.0.1 — 2026-11-12 (citation only, no data seen)
+- Filled in the source for Dalio's "bubbles burst when holders must sell to raise cash"
+  idea: Forbes, Oct 7, 2026 (Fiona Riley), reporting his Singapore conference remarks.
+- Confirmed the essay date shown on the Substack page: June 10, 2026.
+- No definitions, thresholds or universes changed.
+
 ## v1.0 — 2026-11-12
 - Initial pre-registration. No data downloaded.
 - Design choices made by the author before the commit: lender proxy = FRED DRTSCILM;

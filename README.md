@@ -5,6 +5,8 @@ A small, pre-registered pilot test of one rule about building booms:
 > *A building boom ends in a bust when builders' cash flow falls short of their spending
 > and lenders step back.*
 
+*Author: Andrew Razo.*
+
 **Status: Stage 0, pre-registration only. No data has been downloaded yet.**
 
 - [`RULE.md`](RULE.md): the exact definitions, universes, test, and failure

@@ -12,13 +12,18 @@ After this commit, no definition or threshold below changes without an entry in
 > **The Funding-Gap Rule:** *A building boom ends in a bust when builders' cash flow
 > falls short of their spending and lenders step back.*
 
-**Where it comes from.** Ray Dalio has argued that bubbles usually burst when owners
-have to sell assets to raise cash. *(Citation to be added by the author: exact book or
-essay and page.)* Applying that idea to **builders** (firms spending heavily on
-long-lived assets) and to the **cash-flow gap** is **my own extension, not Dalio's claim.**
+**Where it comes from.** Ray Dalio has argued that bubbles usually burst when holders
+have to sell assets to raise cash. Forbes reports him saying the bubble "usually pricks
+at that" moment of selling wealth to get money. Source: Fiona Riley, "Billionaire Ray
+Dalio Warns AI Bubble Could Soon Burst," *Forbes*, Oct 7, 2026, reporting his remarks at
+the Forbes Global CEO Conference in Singapore
+(<https://www.forbes.com/sites/fionariley/2026/10/07/billionaire-ray-dalio-warns-ai-bubble-could-soon-burst/>).
+This is a news report of spoken remarks, not Dalio's own written text. Applying the idea
+to **builders** (firms spending heavily on long-lived assets) and to the **cash-flow gap
+plus lender pullback** is **my own extension, not Dalio's claim.**
 
 **Why test it this way.** In "Principled Thinking and AI Need to Go Together"
-(Ray Dalio, Substack, June 2026,
+(Ray Dalio, *Principled Perspectives* Substack, June 10, 2026,
 <https://raydalio.substack.com/p/principled-thinking-and-ai-need-to>), Dalio describes
 writing a principle down from cause-and-effect logic, back-testing it against history,
 and not deriving principles by data mining. This project follows that order: state the
