@@ -26,6 +26,10 @@ STEPS = [
     ("Addendum A1: pick the comparison boom", [sys.executable, "stages/stage2c_select_comparison.py"]),
     ("Addendum A1: comparison part A (SIC 7370)", [sys.executable, "stages/stage2a_universe_and_tags.py", "7370", "comparison"]),
     ("Addendum A1: comparison part B", [sys.executable, "stages/stage2b_test.py", "comparison"]),
+    # Addendum A2 (RULE.md section 7). First run downloads ~4,400 filings (about an hour);
+    # the sentences are cached in data/raw/edgar/borrowing_base_sentences.jsonl.gz.
+    ("Addendum A2: borrowing-base cuts", [sys.executable, "stages/stage3a_borrowing_base.py"]),
+    ("Addendum A2: firm-level lender test", [sys.executable, "stages/stage3b_test.py"]),
 ]
 
 for title, cmd in STEPS:

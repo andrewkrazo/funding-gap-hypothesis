@@ -26,6 +26,12 @@ mechanically chosen comparison boom (computer services, SIC 7370, 2011–14) had
 bankruptcies, and the signal fired for 2 of its 15 firms. Full results, the confusion
 tables, every variant and the limits are in **[RESULTS.md](RESULTS.md)**.
 
+**Follow-up (RESULTS.md section 9):** measuring "lenders step back" from each firm's *own*
+bank credit cuts, read from 48,873 filing sentences, changes the picture. Firms whose own
+lenders cut them went bankrupt far more often (49% vs 14% with the full rule; 47% vs 9% for
+the cut alone). But the overspending condition adds nothing beyond the bank's cut, the
+measure is noisy, and the pattern is predictive, not causal.
+
 ![Every firm, quarter by quarter](figures/stage2_firm_timeline.png)
 
 ## Definitions (full, code-ready versions in [RULE.md](RULE.md))
@@ -113,7 +119,8 @@ LEARN.md         every method and trap, in plain language
 run_all.py       one command to reproduce everything
 fundgap/         library: EDGAR/FRED access, YTD differencing, TTM, labels
 stages/          stage1_hyperscalers.py, stage2a_universe_and_tags.py, stage2b_test.py,
-                 stage2c_select_comparison.py (the comparison boom)
+                 stage2c_select_comparison.py (the comparison boom),
+                 stage3a_borrowing_base.py, stage3b_test.py (firm-level lender follow-up)
 tests/           unit tests (YTD differencing, TTM, labels, confusion table)
 data/raw/        raw downloads (gzip) + SOURCES.csv
 data/clean/      tables produced by the stages

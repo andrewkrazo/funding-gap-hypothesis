@@ -1,0 +1,187 @@
+extraction,cik,entity_name,bust_quarter,exited,has_borrowing_base,n_cuts_2013_2019,P,P_reason,P_first_signal,S1,S3,S2,S4
+v1,797468,OCCIDENTAL PETROLEUM CORP /DE/,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,773910,Anadarko Petroleum Corp,,True,False,0,TN,"no signal, no bust",,TN,TN,,
+v1,6769,APACHE CORPORATION,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,1090012,DEVON ENERGY CORP/DE,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,895126,EXPAND ENERGY CORPORATION,,False,True,1,FP,"signal, no bust",2016Q4,FP,FP,FP,FP
+v1,101778,Marathon Oil Corporation,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,821189,"EOG RESOURCES, INC.",,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,72207,NOBLE ENERGY INC,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,717423,MURPHY OIL CORPORATION,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,1326428,"ROAN RESOURCES, INC.",2016Q2,False,True,7,TP,signal before bust,2014Q4,TP,TP,TP,TP
+v1,1609253,California Resources Corp,,False,True,1,TN,"no signal, no bust",,FP,TN,TN,TN
+v1,1038357,PIONEER NATURAL RESOURCES CO,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,732834,"CONTINENTAL RESOURCES, INC.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v1,945764,DENBURY INC.,,False,True,3,TN,"no signal, no bust",,FP,TN,TN,TN
+v1,1070412,CNX Resources Corporation,,False,True,2,TN,"no signal, no bust",,TN,TN,TN,TN
+v1,33213,EQT CORPORATION,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,1358071,CONCHO RESOURCES INC,,False,True,2,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v1,1108827,"QEP RESOURCES, INC.",,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v1,1166036,MARKWEST ENERGY PARTNERS L P,,True,False,0,TN,"no signal, no bust",,TN,TN,,
+v1,912750,NEWFIELD EXPLORATION CO /DE/,,True,False,0,TN,"no signal, no bust",,TN,TN,,
+v1,1255474,WHITING HOLDINGS LLC,,False,True,9,FP,"signal, no bust",2013Q3,FP,FP,FP,FP
+v1,1338613,REGENCY ENERGY PARTNERS LP,,True,True,1,FP,"signal, no bust",2014Q3,FP,FP,FP,
+v1,1518832,"WPX Energy, Inc.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v1,1584952,EP ENERGY CORP,2019Q4,False,True,10,TP,signal before bust,2018Q1,TP,FN,TP,TP
+v1,7332,SOUTHWESTERN ENERGY COMPANY,,False,False,2,TN,"no signal, no bust",,TN,TN,,TN
+v1,1349436,"SANDRIDGE ENERGY, INC.",2016Q2,False,True,6,TP,signal before bust,2013Q3,TP,TP,TP,TP
+v1,1548691,SAMSON RESOURCES CORP,,True,True,2,FP,"signal, no bust",2014Q3,FP,FP,FP,
+v1,315852,RANGE RESOURCES CORP,,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v1,1168054,CIMAREX ENERGY CO.,,False,True,1,FP,"signal, no bust",2015Q1,FP,FP,FP,FP
+v1,277595,ENERGEN CORP,,True,True,5,FP,"signal, no bust",2015Q2,FP,FP,FP,
+v1,1433270,ANTERO RESOURCES CORPORATION,,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v1,1282648,Battalion Oil Corp,2016Q3,False,True,14,TP,signal before bust,2013Q3,TP,TP,TP,TP
+v1,858470,COTERRA ENERGY INC.,,False,True,3,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v1,893538,SM ENERGY CO,,False,True,9,FP,"signal, no bust",2013Q3,FP,FP,FP,FP
+v1,1486159,CHORD ENERGY CORPORATION,,False,True,4,FP,"signal, no bust",2015Q2,FP,FP,FP,FP
+v1,1357371,BREITBURN ENERGY PARTNERS LP,2016Q2,False,True,6,TP,signal before bust,2013Q2,TP,TP,TP,TP
+v1,798949,Unit Corporation,,False,True,7,FP,"signal, no bust",2015Q2,FP,FP,FP,FP
+v1,1471261,"Cobalt International Energy, Inc.",2017Q4,False,True,0,FN,lenders never stepped back in the 12 quarters before the bust,,FN,FN,FN,FN
+v1,1340282,ROSETTA RESOURCES INC.,,True,True,0,TN,"no signal, no bust",,TN,TN,TN,
+v1,904080,STONE ENERGY CORP,2016Q4,False,True,6,TP,signal before bust,2016Q2,TP,TP,TP,TP
+v1,1599222,MEMORIAL RESOURCE DEVELOPMENT CORP.,,True,True,4,FP,"signal, no bust",2014Q3,FP,FP,FP,
+v1,351817,"SilverBow Resources, Inc.",2015Q4,False,True,7,TP,signal before bust,2012Q4,TP,TP,TP,TP
+v1,874499,Gulfport Energy Corp,,False,True,3,FP,"signal, no bust",2013Q1,FP,FP,FP,FP
+v1,1528129,"Vital Energy, Inc.",,False,True,6,FP,"signal, no bust",2015Q4,FP,FP,FP,FP
+v1,1288403,"W&T OFFSHORE, INC.",,False,True,9,FP,"signal, no bust",2013Q1,FP,FP,FP,FP
+v1,77159,RANGER OIL CORPORATION,2016Q2,False,True,6,TP,signal before bust,2013Q2,TP,TP,TP,TP
+v1,1384072,"GRIZZLY ENERGY, LLC",2017Q1,False,True,17,TP,signal before bust,2015Q2,TP,TP,TP,TP
+v1,316300,EXCO RESOURCES INC,2018Q1,False,True,14,TP,signal before bust,2015Q1,TP,TP,TP,TP
+v1,1346980,"CHAPARRAL ENERGY, INC.",2016Q2,False,True,13,TP,signal before bust,2013Q2,TP,TP,TP,TP
+v1,1172139,BILL BARRETT CORP,,True,True,7,FP,"signal, no bust",2013Q1,FP,FP,FP,
+v1,1509991,Kosmos Energy Ltd.,,False,True,4,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v1,1533924,AMPLIFY ENERGY CORP.,2016Q2,False,True,6,TP,signal before bust,2014Q1,TP,TP,TP,TP
+v1,1361937,Harvest Oil & Gas Corp.,2018Q2,False,True,13,TP,signal before bust,2016Q2,TP,TP,TP,TP
+v1,23194,"COMSTOCK RESOURCES, INC.",,False,True,2,FP,"signal, no bust",2013Q2,FP,FP,FP,FP
+v1,1364541,EAGLE ROCK ENERGY PARTNERS L P,,True,True,4,FP,"signal, no bust",2013Q2,FP,FP,FP,
+v1,1040593,CARRIZO OIL & GAS INC,,False,True,5,FP,"signal, no bust",2013Q4,FP,FP,FP,FP
+v1,77877,"PDC Energy, Inc.",,False,True,0,FP,"signal, no bust",2013Q1,FP,FP,FP,FP
+v1,1273441,GRAN TIERRA ENERGY INC.,,False,True,1,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v1,750199,"EPL OIL & GAS, INC.",,True,True,3,FP,"signal, no bust",2014Q1,FP,FP,FP,
+v1,1335190,Magnum Hunter Resources Corp,2015Q4,False,True,7,TP,signal before bust,2012Q4,TP,TP,TP,TP
+v1,1521847,AMPLIFY ENERGY CORP,2017Q1,False,True,19,TP,signal before bust,2014Q1,TP,TP,TP,TP
+v1,1502012,"QR Energy, LP",,True,True,2,TN,"no signal, no bust",,FP,TN,TN,
+v1,38079,SABINE OIL & GAS CORP,2015Q3,False,True,7,TP,signal before bust,2015Q1,TP,TP,TP,TP
+v1,1358831,LEGACY RESERVES LP,,True,True,6,FP,"signal, no bust",2013Q3,FP,FP,FP,
+v1,1528837,SANCHEZ ENERGY CORP,2019Q3,False,True,7,TP,signal before bust,2016Q4,TP,TP,TP,TP
+v1,1509589,"Civitas Resources, Inc.",2017Q1,False,True,9,TP,signal before bust,2014Q3,TP,TP,TP,TP
+v1,1112412,Endeavour International Corporation,2014Q4,False,False,0,FN,lenders never stepped back in the 12 quarters before the bust,,FN,FN,,FN
+v1,1539838,"DIAMONDBACK ENERGY, INC.",,False,True,3,FP,"signal, no bust",2013Q1,FP,FP,FP,FP
+v1,1104485,"NORTHERN OIL AND GAS, INC.",,False,True,3,TN,"no signal, no bust",,FP,TN,TN,TN
+v1,1573166,"Jones Energy, Inc.",2019Q2,False,True,12,FN,no shortfall in the 12 quarters before the bust,,TP,TP,FN,FN
+v1,1469510,RESOLUTE ENERGY CORP,,True,True,8,FP,"signal, no bust",2013Q3,FP,FP,FP,
+v1,1060990,QUICKSILVER RESOURCES INC,2015Q1,False,True,2,TP,signal before bust,2014Q2,TP,TP,TP,TP
+v1,880115,CLAYTON WILLIAMS ENERGY INC /DE,,True,True,7,FP,"signal, no bust",2013Q2,FP,FP,FP,
+v1,1574648,Athlon Energy Inc.,,True,True,2,FP,"signal, no bust",2013Q3,FP,FP,FP,
+v1,844965,"TETRA Technologies, Inc.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v1,1405073,APPROACH RESOURCES INC,2019Q4,False,True,11,TP,signal before bust,2017Q1,TP,TP,TP,TP
+v1,1600470,MONTAGE RESOURCES CORP,,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v1,1281922,TRIANGLE PETROLEUM CORP,2016Q2,False,True,4,TP,signal before bust,2014Q3,TP,TP,TP,TP
+v1,1397516,REX ENERGY CORP,2018Q2,False,True,3,TP,signal before bust,2016Q1,TP,TP,TP,TP
+v1,943861,GOODRICH PETROLEUM CORPORATION,2016Q2,False,True,13,TP,signal before bust,2014Q2,TP,TP,TP,TP
+v1,1071993,CONTANGO OIL & GAS CO,,False,True,4,FP,"signal, no bust",2016Q1,FP,FP,FP,FP
+v1,1520006,Matador Resources Company,,False,True,3,FP,"signal, no bust",2013Q1,FP,FP,FP,FP
+v1,1588238,RICE ENERGY INC.,,True,True,0,TN,"no signal, no bust",,TN,TN,TN,
+v1,821483,"PAR PACIFIC HOLDINGS, INC.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v1,1518403,"ALTA MESA HOLDINGS, LP",2019Q3,False,True,9,TP,signal before bust,2016Q4,TP,TP,TP,TP
+v1,1594466,Pioneer PE Holding LLC,,False,True,9,FP,"signal, no bust",2014Q3,FP,FP,FP,FP
+v1,1588242,DENVER PARENT CORP,2016Q1,False,True,3,TP,signal before bust,2014Q3,TP,TP,TP,TP
+v1,845289,"HARVEST NATURAL RESOURCES, INC.",,True,False,0,TN,"no signal, no bust",,TN,TN,,
+v1,785968,"MILLER ENERGY RESOURCES, INC.",2015Q4,False,True,2,TP,signal before bust,2015Q1,TP,TP,TP,TP
+v1,872248,PETROQUEST ENERGY INC,2018Q4,False,True,6,TP,signal before bust,2015Q4,TP,TP,TP,TP
+v1,1431372,GASTAR EXPLORATION INC.,2018Q4,False,True,5,TP,signal before bust,2016Q1,TP,TP,TP,TP
+v1,1588216,"RSP PERMIAN, INC.",,True,True,0,TN,"no signal, no bust",,TN,TN,TN,
+v1,1518909,"Black Elk Energy Offshore Operations, LLC",,True,True,4,FP,"signal, no bust",2013Q1,FP,FP,FP,
+v2,797468,OCCIDENTAL PETROLEUM CORP /DE/,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,773910,Anadarko Petroleum Corp,,True,False,0,TN,"no signal, no bust",,TN,TN,,
+v2,6769,APACHE CORPORATION,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,1090012,DEVON ENERGY CORP/DE,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,895126,EXPAND ENERGY CORPORATION,,False,True,1,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,101778,Marathon Oil Corporation,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,821189,"EOG RESOURCES, INC.",,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,72207,NOBLE ENERGY INC,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,717423,MURPHY OIL CORPORATION,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,1326428,"ROAN RESOURCES, INC.",2016Q2,False,True,5,TP,signal before bust,2014Q4,TP,TP,TP,TP
+v2,1609253,California Resources Corp,,False,True,1,TN,"no signal, no bust",,FP,TN,TN,TN
+v2,1038357,PIONEER NATURAL RESOURCES CO,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,732834,"CONTINENTAL RESOURCES, INC.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,945764,DENBURY INC.,,False,True,3,TN,"no signal, no bust",,FP,TN,TN,TN
+v2,1070412,CNX Resources Corporation,,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,33213,EQT CORPORATION,,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,1358071,CONCHO RESOURCES INC,,False,True,2,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v2,1108827,"QEP RESOURCES, INC.",,False,False,0,TN,"no signal, no bust",,TN,TN,,TN
+v2,1166036,MARKWEST ENERGY PARTNERS L P,,True,False,0,TN,"no signal, no bust",,TN,TN,,
+v2,912750,NEWFIELD EXPLORATION CO /DE/,,True,False,0,TN,"no signal, no bust",,TN,TN,,
+v2,1255474,WHITING HOLDINGS LLC,,False,True,6,FP,"signal, no bust",2013Q3,FP,FP,FP,FP
+v2,1338613,REGENCY ENERGY PARTNERS LP,,True,True,0,TN,"no signal, no bust",,TN,TN,TN,
+v2,1518832,"WPX Energy, Inc.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,1584952,EP ENERGY CORP,2019Q4,False,True,3,TP,signal before bust,2018Q1,TP,FN,TP,TP
+v2,7332,SOUTHWESTERN ENERGY COMPANY,,False,False,2,TN,"no signal, no bust",,TN,TN,,TN
+v2,1349436,"SANDRIDGE ENERGY, INC.",2016Q2,False,True,3,TP,signal before bust,2015Q1,TP,TP,TP,TP
+v2,1548691,SAMSON RESOURCES CORP,,True,True,2,FP,"signal, no bust",2014Q3,FP,FP,FP,
+v2,315852,RANGE RESOURCES CORP,,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,1168054,CIMAREX ENERGY CO.,,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,277595,ENERGEN CORP,,True,True,3,FP,"signal, no bust",2015Q2,FP,FP,FP,
+v2,1433270,ANTERO RESOURCES CORPORATION,,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,1282648,Battalion Oil Corp,2016Q3,False,True,4,TP,signal before bust,2013Q3,TP,TP,TP,TP
+v2,858470,COTERRA ENERGY INC.,,False,True,2,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v2,893538,SM ENERGY CO,,False,True,4,FP,"signal, no bust",2015Q4,FP,FP,FP,FP
+v2,1486159,CHORD ENERGY CORPORATION,,False,True,3,FP,"signal, no bust",2015Q2,FP,FP,FP,FP
+v2,1357371,BREITBURN ENERGY PARTNERS LP,2016Q2,False,True,1,TP,signal before bust,2014Q4,TP,TP,TP,TP
+v2,798949,Unit Corporation,,False,True,5,FP,"signal, no bust",2015Q2,FP,FP,FP,FP
+v2,1471261,"Cobalt International Energy, Inc.",2017Q4,False,True,0,FN,lenders never stepped back in the 12 quarters before the bust,,FN,FN,FN,FN
+v2,1340282,ROSETTA RESOURCES INC.,,True,True,0,TN,"no signal, no bust",,TN,TN,TN,
+v2,904080,STONE ENERGY CORP,2016Q4,False,True,1,TP,signal before bust,2016Q2,TP,TP,TP,TP
+v2,1599222,MEMORIAL RESOURCE DEVELOPMENT CORP.,,True,True,2,FP,"signal, no bust",2015Q2,FP,FP,FP,
+v2,351817,"SilverBow Resources, Inc.",2015Q4,False,True,3,TP,signal before bust,2015Q2,TP,TP,TP,TP
+v2,874499,Gulfport Energy Corp,,False,True,1,FP,"signal, no bust",2016Q4,FP,FP,FP,FP
+v2,1528129,"Vital Energy, Inc.",,False,True,3,FP,"signal, no bust",2015Q4,FP,FP,FP,FP
+v2,1288403,"W&T OFFSHORE, INC.",,False,True,4,FP,"signal, no bust",2015Q2,FP,FP,FP,FP
+v2,77159,RANGER OIL CORPORATION,2016Q2,False,True,2,TP,signal before bust,2015Q2,TP,TP,TP,TP
+v2,1384072,"GRIZZLY ENERGY, LLC",2017Q1,False,True,8,TP,signal before bust,2015Q2,TP,TP,TP,TP
+v2,316300,EXCO RESOURCES INC,2018Q1,False,True,9,TP,signal before bust,2015Q1,TP,TP,TP,TP
+v2,1346980,"CHAPARRAL ENERGY, INC.",2016Q2,False,True,3,TP,signal before bust,2014Q2,TP,TP,TP,TP
+v2,1172139,BILL BARRETT CORP,,True,True,6,FP,"signal, no bust",2013Q4,FP,FP,FP,
+v2,1509991,Kosmos Energy Ltd.,,False,True,3,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v2,1533924,AMPLIFY ENERGY CORP.,2016Q2,False,True,3,TP,signal before bust,2014Q1,TP,TP,TP,TP
+v2,1361937,Harvest Oil & Gas Corp.,2018Q2,False,True,8,TP,signal before bust,2015Q4,TP,TP,TP,TP
+v2,23194,"COMSTOCK RESOURCES, INC.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,1364541,EAGLE ROCK ENERGY PARTNERS L P,,True,True,4,FP,"signal, no bust",2013Q2,FP,FP,FP,
+v2,1040593,CARRIZO OIL & GAS INC,,False,True,2,FP,"signal, no bust",2015Q2,FP,FP,FP,FP
+v2,77877,"PDC Energy, Inc.",,False,True,0,FP,"signal, no bust",2013Q1,FP,FP,FP,FP
+v2,1273441,GRAN TIERRA ENERGY INC.,,False,True,1,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v2,750199,"EPL OIL & GAS, INC.",,True,True,1,TN,"no signal, no bust",,FP,TN,TN,
+v2,1335190,Magnum Hunter Resources Corp,2015Q4,False,True,2,TP,signal before bust,2013Q2,TP,TP,TP,TP
+v2,1521847,AMPLIFY ENERGY CORP,2017Q1,False,True,11,TP,signal before bust,2015Q1,TP,TP,TP,TP
+v2,1502012,"QR Energy, LP",,True,True,1,TN,"no signal, no bust",,FP,TN,TN,
+v2,38079,SABINE OIL & GAS CORP,2015Q3,False,True,5,TP,signal before bust,2015Q2,TP,TP,TP,TP
+v2,1358831,LEGACY RESERVES LP,,True,True,5,FP,"signal, no bust",2016Q1,FP,FP,FP,
+v2,1528837,SANCHEZ ENERGY CORP,2019Q3,False,True,4,TP,signal before bust,2018Q4,TP,TP,TP,TP
+v2,1509589,"Civitas Resources, Inc.",2017Q1,False,True,4,TP,signal before bust,2015Q4,TP,TP,TP,TP
+v2,1112412,Endeavour International Corporation,2014Q4,False,False,0,FN,lenders never stepped back in the 12 quarters before the bust,,FN,FN,,FN
+v2,1539838,"DIAMONDBACK ENERGY, INC.",,False,True,2,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v2,1104485,"NORTHERN OIL AND GAS, INC.",,False,True,2,TN,"no signal, no bust",,FP,TN,TN,TN
+v2,1573166,"Jones Energy, Inc.",2019Q2,False,True,5,FN,no shortfall in the 12 quarters before the bust,,TP,TP,FN,FN
+v2,1469510,RESOLUTE ENERGY CORP,,True,True,2,FP,"signal, no bust",2016Q1,FP,FP,FP,
+v2,1060990,QUICKSILVER RESOURCES INC,2015Q1,False,True,2,TP,signal before bust,2014Q2,TP,TP,TP,TP
+v2,880115,CLAYTON WILLIAMS ENERGY INC /DE,,True,True,4,FP,"signal, no bust",2013Q2,FP,FP,FP,
+v2,1574648,Athlon Energy Inc.,,True,True,0,TN,"no signal, no bust",,TN,TN,TN,
+v2,844965,"TETRA Technologies, Inc.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,1405073,APPROACH RESOURCES INC,2019Q4,False,True,3,FN,lenders never stepped back in the 12 quarters before the bust,,FN,TP,FN,FN
+v2,1600470,MONTAGE RESOURCES CORP,,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,1281922,TRIANGLE PETROLEUM CORP,2016Q2,False,True,2,FN,"shortfall, but never while lenders were stepping back",,TP,FN,FN,FN
+v2,1397516,REX ENERGY CORP,2018Q2,False,True,2,TP,signal before bust,2016Q1,TP,TP,TP,TP
+v2,943861,GOODRICH PETROLEUM CORPORATION,2016Q2,False,True,5,TP,signal before bust,2014Q2,TP,TP,TP,TP
+v2,1071993,CONTANGO OIL & GAS CO,,False,True,3,FP,"signal, no bust",2016Q1,FP,FP,FP,FP
+v2,1520006,Matador Resources Company,,False,True,1,FP,"signal, no bust",2016Q2,FP,FP,FP,FP
+v2,1588238,RICE ENERGY INC.,,True,True,0,TN,"no signal, no bust",,TN,TN,TN,
+v2,821483,"PAR PACIFIC HOLDINGS, INC.",,False,True,0,TN,"no signal, no bust",,TN,TN,TN,TN
+v2,1518403,"ALTA MESA HOLDINGS, LP",2019Q3,False,True,4,FN,no data in the quarters when lenders were stepping back,,TP,TP,FN,FN
+v2,1594466,Pioneer PE Holding LLC,,False,True,2,FP,"signal, no bust",2015Q1,FP,FP,FP,FP
+v2,1588242,DENVER PARENT CORP,2016Q1,False,True,2,TP,signal before bust,2014Q3,TP,TP,TP,TP
+v2,845289,"HARVEST NATURAL RESOURCES, INC.",,True,False,0,TN,"no signal, no bust",,TN,TN,,
+v2,785968,"MILLER ENERGY RESOURCES, INC.",2015Q4,False,True,2,TP,signal before bust,2015Q1,TP,TP,TP,TP
+v2,872248,PETROQUEST ENERGY INC,2018Q4,False,True,4,TP,signal before bust,2015Q4,TP,TP,TP,TP
+v2,1431372,GASTAR EXPLORATION INC.,2018Q4,False,True,5,TP,signal before bust,2016Q1,TP,TP,TP,TP
+v2,1588216,"RSP PERMIAN, INC.",,True,True,0,TN,"no signal, no bust",,TN,TN,TN,
+v2,1518909,"Black Elk Energy Offshore Operations, LLC",,True,True,3,FP,"signal, no bust",2013Q1,FP,FP,FP,

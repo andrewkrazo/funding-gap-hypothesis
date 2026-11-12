@@ -149,12 +149,12 @@ def main():
     print("\nCuts becoming public, by quarter (firms):")
     print(per_q[per_q > 0].to_string())
     for _, r in res.iterrows():
-        print(f"\n[{r['comparison']}] {r['description']}")
+        print(f"\n[rules {r['extraction']}, {r['comparison']}] {r['description']}")
         print(f"   signal: {r['TP']} bust / {r['FP']} no bust | no signal: {r['FN']} bust / {r['TN']} no bust"
               f" | n={r['n']}")
         print(f"   bust rate with signal {r['bust_rate_if_signal']:.1%} vs base {r['base_rate_no_signal']:.1%}"
               f" | p={r['fisher_p']:.3f} | {r['probabilistic_reading']} | strict: {r['strict_reading']}")
-    print("\nPrimary (P) labels:")
+    print("\nPrimary (P) labels, rules v2:")
     print(lab.sort_values(["P", "entity_name"])[["entity_name", "P", "P_reason", "P_first_signal", "bust_quarter",
                                                   "n_cuts_2013_2019", "S1"]].to_string(index=False))
 

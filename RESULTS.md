@@ -12,6 +12,12 @@ A pre-registered comparison boom (computer services, SIC 7370, chosen mechanical
 the fastest-growing non-energy capex boom of 2011–14) had no bankruptcies, and the
 signal fired for only 2 of its 15 firms (section 6).
 
+**Follow-up (section 9):** when "lenders step back" is measured from each firm's *own*
+lenders (cuts to its borrowing base, read from its filings) instead of a national survey,
+the signal becomes strong: 49% of signaled firms went bankrupt vs 14% of the rest.
+But the overspending half of the rule adds nothing beyond the bank's cut, and this
+is a predictive pattern, not proof of cause.
+
 The study was peer-reviewed after the first results (section 8). One bankruptcy label
 was a data error and was corrected, which moved the base rate from 53% to 47%. No check
 changes the conclusion.
@@ -282,6 +288,83 @@ the rule unsupported.
 - that RULE.md, CHANGELOG v1.1 and the TTM tables were committed before any bankruptcy
   code or data existed, and that the code matches the pre-registered definitions.
 
+## 9. Follow-up: measuring "lenders step back" firm by firm (RULE.md section 7)
+
+**Why.** The main test's lender measure was one national survey that switched on for
+every firm at once. This follow-up uses each firm's **own** lenders instead. Many oil and
+gas producers borrow under a credit line whose maximum (the **borrowing base**) the banks
+re-set about twice a year from the value of the firm's reserves, and firms must disclose
+when it's cut. Same 93 firms, same bankruptcy definition, same windows; only the lender
+measure changes.
+
+**Data.** 48,873 sentences mentioning "borrowing base," from 4,427 of these firms'
+10-K, 10-Q and 8-K filings (2012–2019, EDGAR full-text search). Every cut keeps its
+accession number and URL (`data/clean/bbase_cuts_v1.csv`, `bbase_cuts_v2.csv`).
+
+**The measure is noisy, and the pre-registered check said so.** Before the test, random
+samples of extracted cuts were read by hand:
+- **Rules as pre-registered (v1):** only 10 of 25 (40%) were real lender cuts. Most errors
+  were *automatic* reductions written into loan agreements, triggered when the firm
+  issued bonds or sold assets. Those are not banks pulling back.
+- **Revised rules (v2, logged before any result):** they exclude those triggers. On a
+  fresh sample, 15 of 25 (60%) were clear lender cuts, 5 were still mechanical and 5 were
+  unclear. Below the 80% bar, so both versions are reported and no further tuning was
+  done.
+- **Recall:** 1 of 10 documents without a detected cut contained one, phrased as
+  "established at $350 million." Misses like that can only weaken the signal.
+
+**Results** (93 firms; bankruptcy = 8-K Item 1.03, 2013–2019):
+
+| Comparison | Bust rate with signal | Without signal (base rate) | p | Reading |
+|---|---|---|---|---|
+| **P: overspending + own bank's cut (rules v2)** | **25/51 = 49%** | **6/42 = 14%** | 0.0004 | supported (pilot) |
+| P, rules v1 | 28/60 = 47% | 3/33 = 9% | 0.0002 | supported (pilot) |
+| **S1: own bank's cut alone, ignoring overspending (v2)** | **28/59 = 47%** | **3/34 = 9%** | 0.0001 | supported (pilot) |
+| S2: P, only firms that have a borrowing base (v2) | 25/51 = 49% | 5/26 = 19% | 0.014 | supported (pilot) |
+| S3: P, same window for everyone (v2) | 27/53 = 51% | 4/40 = 10% | <0.0001 | supported (pilot) |
+| S4: P, firms that stopped filing dropped (v2) | 25/42 = 60% | 6/31 = 19% | 0.0008 | supported (pilot) |
+| *Main test, national survey (for contrast)* | *22/74 = 30%* | *9/19 = 47%* | *0.18* | *not supported* |
+
+Full tables: `data/clean/bbase_results.csv`, `bbase_labels.csv`.
+
+![Own-bank cuts and bankruptcy](figures/bbase_bust_rates.png)
+
+**What it shows:**
+1. **The firm's own lenders pulling back is a strong warning sign.** It fires for about
+   half the firms, and about half of those went bankrupt, against 9–19% of the rest. The
+   first warning came a median of **7 quarters** before the bankruptcy (range 1–12).
+2. **The "spending more than cash flow" half of the rule adds nothing.** The cut alone
+   (S1) does as well as the full rule (P). Every bankruptcy P caught, S1 also caught, and
+   S1 caught 3 more (Jones, Triangle, Alta Mesa) that P missed. Read with the
+   pre-registered rule in RULE.md 7.5: **the banks' own judgment already contained the
+   information, and the cash-flow gap added nothing to it.**
+3. **The measurement, not the idea, sank the main test.** The same firms over the same
+   years gave "not supported" with a national lender measure and "supported (pilot)"
+   with a firm-level one.
+
+**What it does not show (please read):**
+- **Not cause and effect.** Banks cut credit for firms they already see as weak, so a cut
+  partly *reflects* distress rather than causing it. This was written down in advance
+  (RULE.md 7.5). The result says bank cuts *predict* bankruptcy, not that they *cause*
+  it.
+- **Not a fresh test.** These are the same 93 firms whose outcomes were already known,
+  and the extraction rules were revised after the first hand check (though before any
+  result). It needs repeating on data the rules weren't built on, for example the 2020
+  oil crash (follow-up #2).
+- **The measure is noisy:** 60–75% of v2 cuts are real lender cuts.
+- **Part of the gap is "type of borrower."** The 16 firms without a borrowing base are
+  mostly the largest producers (median 2013 assets $14.9B, against $2.2B for firms with
+  one: Occidental, Anadarko, Apache, Devon, EOG, Pioneer and others), and 15 of them
+  didn't go bankrupt. Limited to firms that have a borrowing base (S2), the gap narrows to
+  49% vs 19%, still strong.
+- **The strict reading is still falsified.** 26 firms survived a signal (4 of them went
+  bankrupt in 2020, outside the window), and 6 went bankrupt without one.
+- **p-values are optimistic:** the firms faced the same oil crash, so they aren't
+  independent (section 5). The gaps are large enough that this doesn't change the
+  reading, but the exact p-values shouldn't be taken literally.
+
+![Cuts by quarter](figures/bbase_cuts_by_quarter.png)
+
 ---
 
 ## Three sentences for a resume or cover letter
@@ -298,6 +381,11 @@ the rule unsupported.
    review that caught and fixed a mislabeled bankruptcy filing, and reported all 32
    robustness variants plus their limits: one industry, one episode, and a bankruptcy
    measure that misses firms that deregistered first.
+
+*Optional follow-up sentence:* In a follow-up that read each firm's own bank credit cuts
+from 48,873 filing sentences, firms whose lenders cut them went bankrupt at 47% vs 9%,
+but the overspending condition added nothing beyond the bank's judgment, a predictive
+pattern, not proof of cause.
 
 *Optional alternative to sentence 3:* A mechanically chosen comparison boom (2011–14
 computer-services capex) showed the signal in 13% of firms and had no bankruptcies, vs
