@@ -1,0 +1,15 @@
+url,retrieved_utc,local_file,sha256_of_raw_bytes
+https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json,2026-11-12T16:14:18Z,data/raw/edgar/companyfacts/CIK0001018724.json.gz,acddb7c0a6973a1fd08372de3b292298a34eae7f42a7eedc4bdebd3ac659c8fd
+https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json,2026-11-12T16:14:19Z,data/raw/edgar/companyfacts/CIK0000789019.json.gz,8c1903c041f5c27e86ed15f37debb1f41882b7904bba129ef9edc76478b1e8ea
+https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json,2026-11-12T16:14:20Z,data/raw/edgar/companyfacts/CIK0001652044.json.gz,f87bc183f74b45ecf9a0933e0e0a1b6b97ead51a9d29367a7dae436574e1c1d0
+https://data.sec.gov/api/xbrl/companyfacts/CIK0001288776.json,2026-11-12T16:14:20Z,data/raw/edgar/companyfacts/CIK0001288776.json.gz,45576607661d9bc4055baf922c8a8995f04b866f871ff30a55567f01081f9056
+https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json,2026-11-12T16:14:21Z,data/raw/edgar/companyfacts/CIK0001326801.json.gz,f8e539cea9d363752df2f9bb33078c19ae897ff7f34d49fe4d9a732d032b94f7
+https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json,2026-11-12T16:14:22Z,data/raw/edgar/companyfacts/CIK0001341439.json.gz,fe93b258bc0ba8f3076ddebb5d8bb91c46deaa1f7b06d2ff2e3eaed85fee8a63
+https://api.stlouisfed.org/fred/series?series_id=DRTSCILM&api_key=REDACTED&file_type=json,2026-11-12T16:16:13Z,data/raw/fred/DRTSCILM_info.json.gz,4709a8e99c5e481ed92dcbf1e4ca4c55f315c03f4a2c334f6bdd39d9a12b0e51
+https://api.stlouisfed.org/fred/series/observations?series_id=DRTSCILM&api_key=REDACTED&file_type=json,2026-11-12T16:16:13Z,data/raw/fred/DRTSCILM_observations.json.gz,0ad9bbbfc324e07adf0d23aaf18a7e63a63ff585a3d1e25a5776c92b5cc30de1
+https://api.stlouisfed.org/fred/series?series_id=BAA10Y&api_key=REDACTED&file_type=json,2026-11-12T16:16:14Z,data/raw/fred/BAA10Y_info.json.gz,770424793a117f24237c0de2f0552e68c292dabe9ec9277720c84217539d8c61
+https://api.stlouisfed.org/fred/series/observations?series_id=BAA10Y&api_key=REDACTED&file_type=json,2026-11-12T16:16:14Z,data/raw/fred/BAA10Y_observations.json.gz,72fc24a9da9a8542d65bfbc9983e715b26cd9be20969f5fe60ed3a615cc0ae9b
+https://api.stlouisfed.org/fred/series?series_id=BAMLC0A0CM&api_key=REDACTED&file_type=json,2026-11-12T16:16:15Z,data/raw/fred/BAMLC0A0CM_info.json.gz,27f154fc9b4cecce03f870b26dd12b2d5b6aae4fef8b4d89b6c613976c74eb00
+https://api.stlouisfed.org/fred/series/observations?series_id=BAMLC0A0CM&api_key=REDACTED&file_type=json,2026-11-12T16:16:15Z,data/raw/fred/BAMLC0A0CM_observations.json.gz,6d002fdf8248e2b0714386b55b687d2faf794ade12077a901edd019b69392f04
+https://api.stlouisfed.org/fred/series?series_id=BAMLH0A0HYM2&api_key=REDACTED&file_type=json,2026-11-12T16:16:16Z,data/raw/fred/BAMLH0A0HYM2_info.json.gz,498486c6f30455812859ad79b9d35bedbf60d4e681e4e6b7951917338dbc311f
+https://api.stlouisfed.org/fred/series/observations?series_id=BAMLH0A0HYM2&api_key=REDACTED&file_type=json,2026-11-12T16:16:16Z,data/raw/fred/BAMLH0A0HYM2_observations.json.gz,98045d15c2aa7ec74bb88547a3bdbca244aa39875069e6a1509c0b6b2f466c82

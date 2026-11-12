@@ -1,0 +1,17 @@
+company,stage,ciks,series,tags_in_priority_order,reason
+Amazon,1,1018724,ocf,NetCashProvidedByUsedInOperatingActivities,Only OCF tag used; full coverage 2008-2026.
+Amazon,1,1018724,capex_net_old,PaymentsToAcquirePropertyPlantAndEquipment,"Used in filings through the 2017Q1 10-Q. FY2016 value ($6.737B, 2017 10-K) is net of property incentives."
+Amazon,1,1018724,capex_gross_new,PaymentsToAcquireProductiveAssets,"Used from the 2018Q3 10-Q onward. FY2016 value under this tag is $7.804B (2019 10-K), so it is a different (gross) definition, not a relabel. Filings 2017Q2-2018Q2 used a company-specific tag that the companyfacts API does not include. NOT spliced with capex_net_old pending author decision."
+Amazon,1,1018724,finance_lease_principal,FinanceLeasePrincipalPayments|RepaymentsOfLongTermCapitalLeaseObligations,Descriptive only; not capex under RULE.md 2.3.
+Microsoft,1,789019,ocf,NetCashProvidedByUsedInOperatingActivities|NetCashProvidedByUsedInOperatingActivitiesContinuingOperations,"19 filings (about FY2013-FY2017) used only the continuing-operations tag, never both in one filing, so it is the reported OCF line. Fallback per RULE.md 2.2."
+Microsoft,1,789019,capex,PaymentsToAcquirePropertyPlantAndEquipment,Single capex line 'Additions to property and equipment'; full coverage.
+Microsoft,1,789019,finance_lease_principal,FinanceLeasePrincipalPayments,Descriptive only.
+Alphabet,1,1288776|1652044,ocf,NetCashProvidedByUsedInOperatingActivities,Google Inc. (CIK 1288776) filed through 2015Q3; Alphabet Inc. (CIK 1652044) after. Same company; facts pooled.
+Alphabet,1,1288776|1652044,capex,PaymentsToAcquirePropertyPlantAndEquipment,Same pooling as OCF; full coverage.
+Alphabet,1,1288776|1652044,finance_lease_principal,FinanceLeasePrincipalPayments,Descriptive only; tagged from 2022.
+Meta,1,1326801,ocf,NetCashProvidedByUsedInOperatingActivities,Full coverage.
+Meta,1,1326801,capex,PaymentsToAcquirePropertyPlantAndEquipment,Full coverage.
+Meta,1,1326801,finance_lease_principal,FinanceLeasePrincipalPayments|RepaymentsOfLongTermCapitalLeaseObligations,Descriptive only.
+Oracle,1,1341439,ocf,NetCashProvidedByUsedInOperatingActivities|NetCashProvidedByUsedInOperatingActivitiesContinuingOperations,"19 filings (about FY2013-FY2018) used only the continuing-operations tag, never both in one filing. Fallback per RULE.md 2.2. Fiscal year ends May 31, so quarters end Aug/Nov/Feb/May and are labeled by the calendar quarter containing the end date."
+Oracle,1,1341439,capex,PaymentsToAcquirePropertyPlantAndEquipment,Full coverage.
+Oracle,1,1341439,finance_lease_principal,FinanceLeasePrincipalPayments,Descriptive only; tagged from FY2025.
