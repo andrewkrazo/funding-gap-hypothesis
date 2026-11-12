@@ -21,8 +21,10 @@ against history rather than mining history for what worked. Sources are in
 (2013–2019), firms that showed the signal went bankrupt *less* often than firms that
 didn't: 30% vs 53%, p = 0.10, n = 93. The main reason: almost every producer outspent its
 cash flow in 2013–15, and the bank-tightening measure turned on for everyone at once in
-2015, so the signal couldn't separate failures from survivors. Full results, the
-confusion table, every variant and the limits are in **[RESULTS.md](RESULTS.md)**.
+2015, so the signal couldn't separate failures from survivors. A pre-registered,
+mechanically chosen comparison boom (computer services, SIC 7370, 2011–14) had no
+bankruptcies, and the signal fired for 2 of its 15 firms. Full results, the confusion
+tables, every variant and the limits are in **[RESULTS.md](RESULTS.md)**.
 
 ![Every firm, quarter by quarter](figures/stage2_firm_timeline.png)
 
@@ -108,7 +110,8 @@ RESULTS.md       what the test showed and did not show
 LEARN.md         every method and trap, in plain language
 run_all.py       one command to reproduce everything
 fundgap/         library: EDGAR/FRED access, YTD differencing, TTM, labels
-stages/          stage1_hyperscalers.py, stage2a_universe_and_tags.py, stage2b_test.py
+stages/          stage1_hyperscalers.py, stage2a_universe_and_tags.py, stage2b_test.py,
+                 stage2c_select_comparison.py (the comparison boom)
 tests/           unit tests (YTD differencing, TTM, labels, confusion table)
 data/raw/        raw downloads (gzip) + SOURCES.csv
 data/clean/      tables produced by the stages

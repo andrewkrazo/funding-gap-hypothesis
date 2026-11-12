@@ -21,6 +21,11 @@ STEPS = [
     ("Stage 1: five large tech spenders (descriptive)", [sys.executable, "stages/stage1_hyperscalers.py"]),
     ("Stage 2A: universe, tags, TTM tables", [sys.executable, "stages/stage2a_universe_and_tags.py"]),
     ("Stage 2B: bankruptcy labels and the test", [sys.executable, "stages/stage2b_test.py"]),
+    # Addendum A1 (RULE.md section 6). The first run looks up ~2,200 SIC codes
+    # (about 15 minutes); the result is cached in data/clean/comparison_sic_map.csv.
+    ("Addendum A1: pick the comparison boom", [sys.executable, "stages/stage2c_select_comparison.py"]),
+    ("Addendum A1: comparison part A (SIC 7370)", [sys.executable, "stages/stage2a_universe_and_tags.py", "7370", "comparison"]),
+    ("Addendum A1: comparison part B", [sys.executable, "stages/stage2b_test.py", "comparison"]),
 ]
 
 for title, cmd in STEPS:

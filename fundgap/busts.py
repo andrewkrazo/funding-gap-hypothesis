@@ -38,7 +38,8 @@ def all_filings(cik) -> pd.DataFrame:
 def bankruptcy_events(filings: pd.DataFrame, start="2013-01-01", end="2019-12-31") -> pd.DataFrame:
     """8-K / 8-K/A filings whose item list includes 1.03, within [start, end]."""
     f = filings[filings["form"].isin(["8-K", "8-K/A"])].copy()
-    f = f[f["items"].fillna("").str.split(",").apply(lambda xs: "1.03" in [x.strip() for x in xs])]
+    has_103 = [("1.03" in [x.strip() for x in str(items).split(",")]) for items in f["items"].fillna("")]
+    f = f[pd.Series(has_103, index=f.index, dtype=bool)]  # stays a table even when empty
     # The event date is the report date if given, else the filing date.
     f["event_date"] = f["reportDate"].where(f["reportDate"].fillna("") != "", f["filingDate"])
     f = f[(f["event_date"] >= start) & (f["event_date"] <= end)].sort_values("event_date")

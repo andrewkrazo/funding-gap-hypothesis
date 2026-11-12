@@ -130,6 +130,19 @@ include the boring survivors and the booms that ended well.
 **Here.** The mechanical rule picked 93 testable firms. 61 didn't go bankrupt, and they
 are the reason the rule failed.
 
+## 10b. Choosing a comparison group without hindsight
+
+**Problem.** "Add a boom that ended well" sounds simple, but picking one *because* it
+ended well is selecting on the outcome again.
+
+**Fix here.** The rule was written down first (RULE.md section 6): take the non-energy
+sector whose aggregate capex grew fastest from 2011 to 2014, whatever it turns out to be.
+Then *measure* how it ended. The rule picked computer services (SIC 7370). Its ending was
+then measured: no bankruptcies, and the signal fired for 2 of 15 firms.
+
+> "I didn't choose the comparison; a rule did, and I committed the rule before looking.
+> Then I measured whether that boom ended well instead of assuming it."
+
 ## 11. A signal that fires for everyone
 
 **Idea.** A warning light that's always on carries no information. Rules that describe a

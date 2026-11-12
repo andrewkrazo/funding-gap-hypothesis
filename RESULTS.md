@@ -8,6 +8,10 @@ often than firms that didn't: 30% vs 53%. The difference is not statistically re
 tightened in 2015, the "signal" lit up for nearly everyone and couldn't tell the firms
 that would fail from the ones that would survive.
 
+A pre-registered comparison boom (computer services, SIC 7370, chosen mechanically as
+the fastest-growing non-energy capex boom of 2011–14) had no bankruptcies, and the
+signal fired for only 2 of its 15 firms (section 6).
+
 This is a small pilot, not proof. Every number below comes from
 `data/clean/stage2_results_all_variants.csv` and `data/clean/stage2_labels_all_variants.csv`.
 Each firm's label traces to SEC filings by accession number.
@@ -134,7 +138,53 @@ separate anything.
 - **Small sample.** With 19 firms in the "no signal" row, one or two relabeled firms move
   the base rate by 5–10 points.
 
-## 6. Stage 1 (descriptive only, no prediction)
+## 6. Comparison boom (RULE.md section 6, pre-registered before its data was pulled)
+
+**How it was chosen.** A boom that "ended well" can't be picked by its ending without
+hindsight. So the rule picked **the largest non-energy capex boom of the same years**:
+of 24 eligible sectors, SIC 7370 ("Computer Programming, Data Processing, Etc.") grew
+aggregate capex fastest, from $5.3B in 2011 to $15.4B in 2014 (×2.92).
+Ranking: `data/clean/comparison_sector_ranking.csv`. The group was then built exactly
+like the oil and gas one (assets ≥ $500M at 2013 year end): 19 firms, 15 testable. The
+other 4 are foreign filers with no quarterly US-GAAP data.
+
+**Result (same settings as the headline):**
+
+|                | Bankrupt 2013–2019 | Not bankrupt |
+|----------------|-------------------:|-------------:|
+| **Signal**     | 0                  | 2 (Twitter, Internap) |
+| **No signal**  | 0                  | 13           |
+
+| | Oil and gas (SIC 1311) | Comparison (SIC 7370) |
+|---|---|---|
+| Firms tested | 93 | 15 |
+| Went bankrupt 2013–2019 | 32 (34%) | 0 (0%) |
+| Showed the signal | 74 (80%) | 2 (13%) |
+| **Non-bankrupt firms that showed the signal (false-alarm rate)** | **52 of 61 (85%)** | **2 of 15 (13%)** |
+
+**How to read it (pre-registered).** The signal rarely fired in this boom, so the
+comparison doesn't count against the rule. Most of these firms paid for their build-out
+from their own cash flow. **Pooled** (both groups, secondary): bust rate 22/76 = 29%
+with the signal vs 10/32 = 31% without, p = 0.82. Firm by firm, the signal still tells
+you nothing.
+
+**The one interesting pattern, and why it's weak.** Across the two booms, the one where
+the conditions were widespread (oil and gas, 80% of firms) had a wave of bankruptcies,
+and the one where they were rare (computer services, 13%) had none. That fits the rule
+read as a statement about **booms**, not firms. But it is **two booms**, which differ in
+countless other ways (exposure to a commodity price, profit margins), so it is an
+anecdote, not evidence.
+
+**Caveats.** Only 15 firms. 12 of the 19 stopped filing before late 2019; in Google
+Inc.'s case that's because it became Alphabet (a reorganization, not a failure), which the
+pre-registered rule counts as an exit. The "50% capex cut" bust definition flags 6 of 15
+tech firms as "busts" (Red Hat, TripAdvisor and others), again showing B2 is too loose.
+Internap filed an Item 1.03 8-K in March 2020, outside the window. Files:
+`data/clean/comparison_*.csv`, `figures/comparison_firm_timeline.png`.
+
+![Comparison boom, quarter by quarter](figures/comparison_firm_timeline.png)
+
+## 7. Stage 1 (descriptive only, no prediction)
 
 As of 2026Q3, two of the five large tech spenders show a shortfall: **Oracle** (capex
 1.61× operating cash flow) and **Amazon** (1.28×). Alphabet (0.89×), Meta (0.78×) and
@@ -160,3 +210,9 @@ with no bust.
    year-to-date tagging artifact that produced impossible capex values, and reported all
    32 robustness variants and their limits: one industry, one episode, and a bankruptcy
    measure that misses firms that deregistered first.
+
+*Optional alternative to sentence 3:* A mechanically chosen comparison boom (2011–14
+computer-services capex) showed the signal in 13% of firms and had no bankruptcies, vs
+80% and a 34% bankruptcy rate in oil and gas. That hints the rule may describe which
+*booms* go bad rather than which *firms* fail, though two booms are an anecdote, not
+evidence.

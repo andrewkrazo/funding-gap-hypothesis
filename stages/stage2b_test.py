@@ -40,6 +40,8 @@ EXIT_CUTOFF = "2019-10-01"
 PREFIX = sys.argv[1] if len(sys.argv) > 1 else "stage2"
 # Confirmed wholly-owned subsidiaries dropped in version B (CHANGELOG v1.1 item 3).
 DUPLICATES = {"stage2": {1555082}}  # EP Energy LLC
+GROUP_NAME = {"stage2": "US oil and gas companies (SIC 1311)",
+              "comparison": "comparison boom: computer services (SIC 7370)"}
 VERSIONS = {"A": "quarter_sum", "B": "ltm"}
 
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e6e5e1"
@@ -163,7 +165,7 @@ def timeline_figure(labels: pd.DataFrame, ttm: pd.DataFrame, lenders: pd.DataFra
     ax.legend(handles, ["Cash flow covered capex", "Shortfall (capex > cash flow)",
                         "Signal (shortfall + lenders stepping back)", "Bankruptcy quarter", "No data"],
               loc="upper left", bbox_to_anchor=(0, -0.025), ncol=3, fontsize=7, frameon=False)
-    fig.suptitle("Every firm in the test, quarter by quarter (version B, as first reported)",
+    fig.suptitle(f"Every firm, quarter by quarter: {GROUP_NAME.get(PREFIX, PREFIX)} (version B, as first reported)",
                  x=0.01, ha="left", fontsize=10, color=INK)
     fig.tight_layout()
     fig.savefig(path, dpi=170, bbox_inches="tight")

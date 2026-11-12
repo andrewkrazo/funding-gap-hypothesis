@@ -86,3 +86,11 @@ def test_confusion_counts_and_verdicts():
     assert c["strict_reading"] == "falsified"
     flat = confusion(pd.Series(["TP", "FP", "FN", "TN"]))
     assert flat["probabilistic_reading"] == "not supported"
+
+
+def test_bankruptcy_events_with_no_8ks_at_all():
+    # Foreign filers file 6-Ks, not 8-Ks: the result must be an empty table, not an error.
+    f = pd.DataFrame(dict(cik=[1], accessionNumber=["a"], filingDate=["2016-05-02"],
+                          reportDate=[""], form=["6-K"], items=[""]))
+    ev = bankruptcy_events(f)
+    assert ev.empty and "event_date" in ev.columns
