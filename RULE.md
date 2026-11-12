@@ -292,3 +292,86 @@ both versions (A and B, CHANGELOG v1.1), and all variants. Reported:
 no bankruptcies, that is further evidence the signal is not specific to busts. If the
 signal rarely fires there, the comparison does not count against the rule. Neither
 outcome rescues or condemns the rule alone: it is one more boom.
+
+---
+
+## 7. Addendum A2 (2026-11-12): firm-level "lenders step back", pre-registered before the new data is pulled
+
+**Why.** In the main test, "lenders step back" was a single economy-wide survey number, so
+it switched on for every firm in the same quarter (RESULTS.md section 2). This follow-up
+measures it **firm by firm**. Oil and gas producers commonly borrow under a reserve-based
+credit line, where the bank re-sets the maximum loan (the **borrowing base**) about twice a
+year based on the value of the firm's reserves. A **cut to a firm's borrowing base** is
+that firm's own lenders stepping back, and firms disclose these cuts in their SEC filings.
+
+**What has already been seen (disclosed):** the bankruptcy outcomes of these firms (from
+the main test), and a feasibility count: 76 of the 93 firms mention "borrowing base" in
+a 10-K or 10-Q from 2013–2016, 16 do not, and 1 search errored. No borrowing-base amounts
+or cuts had been looked at when this was written.
+
+### 7.1 Data
+- EDGAR full-text search (`efts.sec.gov/LATEST/search-index`) for the phrase "borrowing
+  base" in each firm's own 10-K, 10-Q and 8-K filings (and amendments), filed 2012-01-01
+  to 2019-12-31.
+- Each matching document is downloaded. Only sentences containing "borrowing base" are
+  kept, each with its accession number and URL, in
+  `data/raw/edgar/borrowing_base_sentences.jsonl.gz`.
+
+### 7.2 What counts as a cut (frozen in `fundgap/bbase.py`, unit-tested before use)
+A sentence counts as reporting a cut when either:
+1. it says the borrowing base **was / has been / will be reduced, decreased or lowered** (or
+   that lenders **reduced / decreased / lowered** it) **to a stated dollar amount**; or
+2. it states the borrowing base went **from $X to $Y** with Y < X (e.g. "redetermined from
+   $500 million to $350 million").
+
+Hypothetical or risk-factor language ("could be reduced", "if the borrowing base is
+reduced") without a stated new amount does not count.
+A reduction the **firm itself chose** ("we elected to reduce…", "at our request",
+"voluntarily", often to save fees) does not count either, because it is not the lenders
+stepping back.
+
+- **Date:** a cut belongs to the calendar quarter of the **filing date** of the earliest
+  filing that reports it, i.e. when it became public.
+- **Duplicates:** the same new amount (within 1%) reported again within 270 days is the
+  same cut.
+- **Flag:** `firm_lender_step_back[q]` = a cut was first reported in quarter q or q−1.
+  Borrowing bases are re-set about every two quarters, so a cut stays "on" until the next
+  re-set.
+
+### 7.3 The test
+Same firms (main test, version B: 93 firms), same shortfall series (TTM, first reported),
+same bust definition (B1, with the CHANGELOG v1.3 correction), same windows and labels
+(RULE.md section 4). Only the lender condition changes:
+
+`signal[q] = shortfall[q] and firm_lender_step_back[q]`
+
+**Pre-registered comparisons, all reported:**
+- **P (primary):** shortfall + firm-level cut, exits kept.
+- **S1:** firm-level cut alone, ignoring the shortfall. The rule says the *combination*
+  matters, so P is compared with S1.
+- **S2:** P, restricted to firms that mention a borrowing base in 2013–2016 (firms that
+  actually have this type of loan).
+- **S3:** P with the symmetric window: busts are credited only for signals from 2013Q1 to
+  min(2016Q4, the quarter before the bust).
+- **S4:** P with firms that stopped filing dropped.
+
+Each gets the confusion table, the base rate, Fisher's exact p (two-sided) and the
+section 4 reading.
+
+### 7.4 Validation (fixed now)
+- **Precision:** 25 extracted cuts, drawn at random (seed 42) without looking at outcomes,
+  are checked by hand against the sentence. Every error is reported.
+- **Recall:** 10 randomly drawn (seed 42) documents that mention "borrowing base" but
+  yield no cut are read for missed cuts.
+- If precision is below 80%, the work stops and the extraction rule is revisited **in a
+  logged change**, with both versions reported.
+
+### 7.5 How it's read (fixed now)
+- **A caution written before the results:** banks cut credit for firms they see as weak,
+  so a cut *alone* (S1) predicting bankruptcy would be expected even if the rule's
+  mechanism were wrong.
+- So the question that matters for the rule is whether **P beats S1:** does adding the
+  overspending condition sharpen the prediction?
+- Any positive result is a prediction, not proof of cause.
+- A strong P with no gain over S1 means the bank's own judgment already contains the
+  information; the overspending condition adds nothing.

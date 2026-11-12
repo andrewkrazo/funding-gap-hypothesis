@@ -4,6 +4,14 @@ Every change to a definition, threshold or universe in `RULE.md` after its first
 is logged here with the date, the reason, and whether any data had been seen. Results
 are reported under both the old and new versions.
 
+## v1.4 — 2026-11-12 (addendum A2; logged BEFORE the borrowing-base data is pulled)
+- Added RULE.md section 7: a follow-up test with a **firm-level** lender measure (cuts
+  to each firm's borrowing base, read from its own filings). Definitions, extraction
+  rule, comparisons, validation and reading were fixed before any borrowing-base data
+  was downloaded.
+- Seen beforehand (disclosed in RULE.md 7): bankruptcy outcomes from the main test, and a
+  count of which firms mention a borrowing base at all.
+
 ## v1.3 — 2026-11-12 (peer review; made AFTER results were seen, so everything is reported both ways)
 - **Data correction:** Black Elk's 8-K (accession 0001518909-14-000034) is listed in
   EDGAR's index metadata as Item 1.03, but the document reports only Items 5.02/9.01 (an
