@@ -36,7 +36,10 @@ from fundgap.lenders import lender_table
 
 QUARTERS = pd.period_range("2012Q1", "2019Q4", freq="Q")
 EXIT_CUTOFF = "2019-10-01"
-EP_ENERGY_LLC = 1555082          # duplicate subsidiary dropped in version B
+# Usage: python stage2b_test.py [PREFIX]   (default "stage2" = main oil and gas test)
+PREFIX = sys.argv[1] if len(sys.argv) > 1 else "stage2"
+# Confirmed wholly-owned subsidiaries dropped in version B (CHANGELOG v1.1 item 3).
+DUPLICATES = {"stage2": {1555082}}  # EP Energy LLC
 VERSIONS = {"A": "quarter_sum", "B": "ltm"}
 
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e6e5e1"
@@ -84,7 +87,7 @@ def run_variant(universe, status, ttm, lenders, version, bust_def, lender_col, v
     lender = lenders[lender_col].reindex(QUARTERS).astype("boolean").fillna(False)
     out = []
     for f in universe.itertuples():
-        if version == "B" and f.cik == EP_ENERGY_LLC:
+        if version == "B" and f.cik in DUPLICATES.get(PREFIX, set()):
             continue
         st = status.loc[f.cik]
         if exits == "dropped" and st["exited"]:
@@ -196,14 +199,14 @@ def rates_figure(results: pd.DataFrame, path: Path):
 
 
 def main():
-    universe = pd.read_csv(DATA_CLEAN / "stage2_universe.csv")
-    ttm = pd.read_csv(DATA_CLEAN / "stage2_ttm.csv")
+    universe = pd.read_csv(DATA_CLEAN / f"{PREFIX}_universe.csv")
+    ttm = pd.read_csv(DATA_CLEAN / f"{PREFIX}_ttm.csv")
     ttm["quarter"] = pd.PeriodIndex(ttm["quarter"], freq="Q")
     lenders = lender_table()
 
     events, status = firm_status(universe)
-    events.to_csv(DATA_CLEAN / "stage2_bankruptcy_8k_events.csv", index=False)
-    status.to_csv(DATA_CLEAN / "stage2_firm_status.csv", index=False)
+    events.to_csv(DATA_CLEAN / f"{PREFIX}_bankruptcy_8k_events.csv", index=False)
+    status.to_csv(DATA_CLEAN / f"{PREFIX}_firm_status.csv", index=False)
     status_i = status.set_index("cik")
 
     results, all_labels = [], []
@@ -216,14 +219,14 @@ def main():
         all_labels.append(lab.assign(**key))
     results = pd.DataFrame(results)
     labels = pd.concat(all_labels, ignore_index=True)
-    results.to_csv(DATA_CLEAN / "stage2_results_all_variants.csv", index=False)
-    labels.to_csv(DATA_CLEAN / "stage2_labels_all_variants.csv", index=False)
+    results.to_csv(DATA_CLEAN / f"{PREFIX}_results_all_variants.csv", index=False)
+    labels.to_csv(DATA_CLEAN / f"{PREFIX}_labels_all_variants.csv", index=False)
 
     FIGURES.mkdir(exist_ok=True)
     head_b = labels[(labels.version == "B") & (labels.bust == "B1") & (labels.lender == "lender_step_back")
                     & (labels.vintage == "first") & (labels.exits == "kept")]
-    timeline_figure(head_b, ttm, lenders, FIGURES / "stage2_firm_timeline.png")
-    rates_figure(results, FIGURES / "stage2_bust_rates.png")
+    timeline_figure(head_b, ttm, lenders, FIGURES / f"{PREFIX}_firm_timeline.png")
+    rates_figure(results, FIGURES / f"{PREFIX}_bust_rates.png")
 
     # ---- Printed report ------------------------------------------------------
     pd.set_option("display.width", 230); pd.set_option("display.max_rows", 200)
@@ -270,12 +273,14 @@ def main():
     post = pd.DataFrame(post)
     post = post.merge(head_b[["cik", "label"]], on="cik", how="left").rename(
         columns={"label": "label_in_headline_test"})
-    post.to_csv(DATA_CLEAN / "stage2_post_window_bankruptcies_2020_2021.csv", index=False)
+    post.to_csv(DATA_CLEAN / f"{PREFIX}_post_window_bankruptcies_2020_2021.csv", index=False)
     print("\nOutside the window (not part of the test): Item 1.03 in 2020-2021 among firms with "
           "no 2013-2019 bankruptcy:")
     print(post[["entity_name", "event_date", "label_in_headline_test"]].to_string(index=False))
 
     # ---- Context number quoted in RESULTS.md: the 2014-16 oil price fall ------
+    if PREFIX != "stage2":
+        return
     from fundgap import fred
     wti = fred.observations("DCOILWTICO").dropna(subset=["value"])
     hi = wti[wti["date"].dt.year == 2014].nlargest(1, "value").iloc[0]

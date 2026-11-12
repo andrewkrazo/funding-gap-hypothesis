@@ -49,18 +49,18 @@ def assets_frame(frame: str = FRAME) -> pd.DataFrame:
     return df
 
 
-def build_universe() -> tuple[pd.DataFrame, dict]:
+def build_universe(sic: str = SIC) -> tuple[pd.DataFrame, dict]:
     """Return the selected firms and a dict of counts for the README funnel."""
-    sic_list = sic_ciks()
+    sic_list = sic_ciks(sic)
     frame = assets_frame()
     in_sic = frame[frame["cik"].isin(sic_list)]
     selected = in_sic[in_sic["val"] >= MIN_ASSETS].copy()
     selected = selected.rename(columns={"val": "assets_2013_usd", "end": "assets_date",
                                         "entityName": "entity_name"})
     funnel = {
-        "ciks_listed_under_sic_1311": len(sic_list),
+        f"ciks_listed_under_sic_{sic}": len(sic_list),
         "ciks_in_assets_frame_CY2013Q4I": len(frame),
-        "sic_1311_and_in_frame": len(in_sic),
+        f"sic_{sic}_and_in_frame": len(in_sic),
         "of_which_assets_ge_500m": len(selected),
     }
     cols = ["cik", "entity_name", "assets_2013_usd", "assets_date", "accn", "frame_url"]

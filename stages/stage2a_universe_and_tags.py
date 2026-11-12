@@ -30,6 +30,11 @@ WINDOW = ("2013Q1", "2016Q4")       # signal window (RULE.md section 4)
 DATA_RANGE = ("2012Q1", "2019Q4")    # quarters kept
 TOTAL_TAG = "PaymentsToAcquireProductiveAssets"
 
+# Usage: python stage2a_universe_and_tags.py [SIC] [PREFIX]
+# Defaults (1311, "stage2") reproduce the main oil and gas test.
+SIC_CODE = sys.argv[1] if len(sys.argv) > 1 else "1311"
+PREFIX = sys.argv[2] if len(sys.argv) > 2 else "stage2"
+
 # Investing inflows used only for the capex sanity check. "Proceeds..." tags
 # containing these words are financing, not investing, so they are skipped.
 FINANCING_WORDS = ("Issuance", "Debt", "Borrow", "LineOfCredit", "LinesOfCredit",
@@ -145,8 +150,8 @@ def ttm_tables(ciks: list[int], cfacts: pd.DataFrame, cfacts_raw: pd.DataFrame) 
 
 def main():
     DATA_CLEAN.mkdir(parents=True, exist_ok=True)
-    universe, funnel = build_universe()
-    universe.to_csv(DATA_CLEAN / "stage2_universe.csv", index=False)
+    universe, funnel = build_universe(SIC_CODE)
+    universe.to_csv(DATA_CLEAN / f"{PREFIX}_universe.csv", index=False)
     print("Funnel:", funnel)
 
     ttm_rows, checks, tagmap, inv_flags = [], [], [], []
@@ -196,12 +201,12 @@ def main():
             double_count_flags=double_count_flags(parts) if not parts.empty else 0,
             investing_flag_years=0 if fl.empty else fl["fy_end"].nunique()))
 
-    pd.concat(ttm_rows, ignore_index=True).to_csv(DATA_CLEAN / "stage2_ttm.csv", index=False)
-    pd.DataFrame(tagmap).to_csv(ROOT / "data" / "stage2_tag_map.csv", index=False)
+    pd.concat(ttm_rows, ignore_index=True).to_csv(DATA_CLEAN / f"{PREFIX}_ttm.csv", index=False)
+    pd.DataFrame(tagmap).to_csv(ROOT / "data" / f"{PREFIX}_tag_map.csv", index=False)
     inv = pd.concat(inv_flags, ignore_index=True) if inv_flags else pd.DataFrame()
-    inv.to_csv(DATA_CLEAN / "stage2_investing_flags.csv", index=False)
+    inv.to_csv(DATA_CLEAN / f"{PREFIX}_investing_flags.csv", index=False)
     checks = pd.DataFrame(checks)
-    checks.to_csv(DATA_CLEAN / "stage2_checks.csv", index=False)
+    checks.to_csv(DATA_CLEAN / f"{PREFIX}_checks.csv", index=False)
 
     pd.set_option("display.width", 220)
     pd.set_option("display.max_rows", 200)
