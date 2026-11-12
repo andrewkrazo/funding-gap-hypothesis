@@ -144,3 +144,70 @@ def test_two_fiscal_quarters_in_one_calendar_quarter_raises():
     ])
     with pytest.raises(ValueError):
         to_quarterly(facts)
+
+
+# ---- LTM identity (ttm_from_filings) ----------------------------------------
+
+from fundgap.quarterly import ttm_from_filings
+
+
+def two_year_filings():
+    """FY2022 = 60 (10-K). In 2023 each 10-Q shows this year's YTD and last
+    year's YTD side by side: Q1 10 vs 8, H1 25 vs 20, 9M 45 vs 33. FY2023 = 70."""
+    return pd.DataFrame([
+        fact("2022-01-01", "2022-12-31", 60, "2023-02-01", accn="K22", form="10-K"),
+        fact("2023-01-01", "2023-03-31", 10, "2023-05-01", accn="Q1"),
+        fact("2022-01-01", "2022-03-31", 8, "2023-05-01", accn="Q1"),
+        fact("2023-01-01", "2023-06-30", 25, "2023-08-01", accn="Q2"),
+        fact("2022-01-01", "2022-06-30", 20, "2023-08-01", accn="Q2"),
+        fact("2023-01-01", "2023-09-30", 45, "2023-11-01", accn="Q3"),
+        fact("2022-01-01", "2022-09-30", 33, "2023-11-01", accn="Q3"),
+        fact("2023-01-01", "2023-12-31", 70, "2024-02-01", accn="K23", form="10-K"),
+        fact("2022-01-01", "2022-12-31", 60, "2024-02-01", accn="K23", form="10-K"),
+    ])
+
+
+def test_ltm_identity_values():
+    t = ttm_from_filings(two_year_filings()).set_index("quarter")["ttm"]
+    assert t[pd.Period("2022Q4")] == 60
+    assert t[pd.Period("2023Q1")] == 60 + 10 - 8
+    assert t[pd.Period("2023Q2")] == 60 + 25 - 20
+    assert t[pd.Period("2023Q3")] == 60 + 45 - 33
+    assert t[pd.Period("2023Q4")] == 70
+
+
+def test_ltm_matches_quarter_sum_when_data_are_consistent():
+    # With consistent tagging, both methods must agree exactly.
+    f = two_year_filings()
+    quarter_sum = trailing_four(to_quarterly(f)).dropna()
+    ltm = ttm_from_filings(f).set_index("quarter")["ttm"]
+    for q, v in quarter_sum.items():
+        assert ltm[q] == v
+
+
+def test_ltm_survives_a_tag_change_between_10q_and_10k():
+    # The 10-K counts an extra line (tag B) that the 10-Qs fold elsewhere.
+    # Quarter-by-quarter subtraction would mix the two; the LTM identity
+    # uses each 10-Q's own side-by-side numbers, so it stays internally consistent.
+    f = two_year_filings()
+    f.loc[f["accn"] == "K23", "val"] = f.loc[f["accn"] == "K23", "val"] + 5
+    t = ttm_from_filings(f).set_index("quarter")["ttm"]
+    assert t[pd.Period("2023Q3")] == 60 + 45 - 33   # no contamination from K23
+
+
+def test_ltm_missing_when_prior_year_not_in_same_filing():
+    f = two_year_filings()
+    f = f[~((f["accn"] == "Q2") & (f["end"] == "2022-06-30"))]
+    t = ttm_from_filings(f)
+    assert pd.Period("2023Q2") not in set(t["quarter"])
+
+
+def test_ltm_non_calendar_fiscal_year():
+    # Fiscal year July-June (Microsoft style).
+    f = pd.DataFrame([
+        fact("2021-07-01", "2022-06-30", 100, "2022-07-28", accn="K", form="10-K"),
+        fact("2022-07-01", "2022-12-31", 55, "2023-01-25", accn="Q"),
+        fact("2021-07-01", "2021-12-31", 50, "2023-01-25", accn="Q"),
+    ])
+    t = ttm_from_filings(f).set_index("quarter")["ttm"]
+    assert t[pd.Period("2022Q4")] == 100 + 55 - 50

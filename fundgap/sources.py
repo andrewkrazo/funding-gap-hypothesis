@@ -56,6 +56,29 @@ def fetch_json(url: str, local_path: Path, headers: dict | None = None,
     return json.loads(raw)
 
 
+def fetch_text(url: str, local_path: Path, headers: dict | None = None,
+               min_interval: float = 0.15) -> str:
+    """Like fetch_json, for non-JSON responses (e.g. EDGAR's Atom listings)."""
+    global _last_request
+    local_path = Path(local_path)
+    if local_path.exists():
+        with gzip.open(local_path, "rb") as f:
+            return f.read().decode("latin-1")
+    wait = min_interval - (time.time() - _last_request)
+    if wait > 0:
+        time.sleep(wait)
+    resp = requests.get(url, headers=headers or {}, timeout=60)
+    _last_request = time.time()
+    if resp.status_code != 200:
+        raise RuntimeError(f"Download failed ({resp.status_code}) for {url}")
+    raw = resp.content
+    local_path.parent.mkdir(parents=True, exist_ok=True)
+    with gzip.open(local_path, "wb") as f:
+        f.write(raw)
+    _log_source(url, local_path, raw)
+    return raw.decode("latin-1")
+
+
 def _log_source(url: str, local_path: Path, raw: bytes) -> None:
     SOURCES_LOG.parent.mkdir(parents=True, exist_ok=True)
     new_file = not SOURCES_LOG.exists()

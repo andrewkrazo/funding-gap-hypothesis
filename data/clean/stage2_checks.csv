@@ -1,0 +1,102 @@
+cik,entity_name,status,note,measurable_quarters_primary,measurable_quarters_preregistered,shortfall_flag_agreement_between_methods,double_count_flags,investing_flag_years
+797468,OCCIDENTAL PETROLEUM CORP /DE/,included,,16,16,1.0,0,4
+773910,Anadarko Petroleum Corp,included,,16,16,1.0,0,2
+6769,APACHE CORPORATION,included,,16,16,0.625,0,2
+1090012,DEVON ENERGY CORP/DE,included,,16,16,1.0,0,0
+895126,EXPAND ENERGY CORPORATION,included,,16,16,0.9375,0,1
+101778,Marathon Oil Corporation,included,,13,16,1.0,0,1
+821189,"EOG RESOURCES, INC.",included,,16,16,1.0,0,3
+72207,NOBLE ENERGY INC,included,,16,16,1.0,0,0
+1157806,ENCANA CORP,excluded: insufficient data,1 measurable TTM quarters in 2013Q1-2016Q4 (need 4),1,1,1.0,0,2
+717423,MURPHY OIL CORPORATION,included,,16,16,1.0,0,0
+1326428,"ROAN RESOURCES, INC.",included,,16,16,1.0,0,2
+1609253,California Resources Corp,included,,10,10,1.0,0,0
+1038357,PIONEER NATURAL RESOURCES CO,included,,16,16,1.0,0,0
+732834,"CONTINENTAL RESOURCES, INC.",included,,16,16,1.0,0,0
+945764,DENBURY INC.,included,,16,16,1.0,0,1
+1070412,CNX Resources Corporation,included,,16,16,1.0,0,3
+33213,EQT CORPORATION,included,,16,16,1.0,0,1
+1358071,CONCHO RESOURCES INC,included,,15,16,1.0,0,1
+1108827,"QEP RESOURCES, INC.",included,,16,16,1.0,0,0
+1166036,MARKWEST ENERGY PARTNERS L P,included,,11,11,1.0,0,0
+912750,NEWFIELD EXPLORATION CO /DE/,included,,16,16,1.0,0,0
+1255474,WHITING HOLDINGS LLC,included,,16,16,1.0,0,1
+1338613,REGENCY ENERGY PARTNERS LP,included,,9,9,1.0,0,0
+1518832,"WPX Energy, Inc.",included,,16,16,1.0,0,0
+1584952,EP ENERGY CORP,included,,11,13,1.0,0,0
+1555082,EP ENERGY LLC,included,,12,16,1.0,0,0
+7332,SOUTHWESTERN ENERGY COMPANY,included,,16,16,0.8125,0,0
+1349436,"SANDRIDGE ENERGY, INC.",included,,15,15,1.0,0,1
+1548691,SAMSON RESOURCES CORP,included,,4,4,1.0,0,0
+315852,RANGE RESOURCES CORP,included,,16,16,1.0,0,2
+1168054,CIMAREX ENERGY CO.,included,,16,16,1.0,0,0
+277595,ENERGEN CORP,included,,16,16,1.0,0,0
+1433270,ANTERO RESOURCES CORPORATION,included,,14,14,0.9285714285714286,23,5
+1282648,Battalion Oil Corp,included,,14,14,1.0,0,1
+778438,"BERRY PETROLEUM COMPANY, LLC",excluded: insufficient data,3 measurable TTM quarters in 2013Q1-2016Q4 (need 4),3,3,1.0,0,0
+858470,COTERRA ENERGY INC.,included,,16,16,1.0,0,0
+893538,SM ENERGY CO,included,,16,16,1.0,0,0
+1486159,CHORD ENERGY CORPORATION,included,,16,16,1.0,0,2
+1357371,BREITBURN ENERGY PARTNERS LP,included,,16,16,1.0,0,0
+798949,Unit Corporation,included,,16,16,1.0,0,0
+1549756,"LinnCo, LLC",excluded: insufficient data,no capex tags,0,0,,0,0
+1471261,"Cobalt International Energy, Inc.",included,,16,16,1.0,0,0
+1340282,ROSETTA RESOURCES INC.,included,,10,10,1.0,0,0
+904080,STONE ENERGY CORP,included,,16,16,1.0,0,1
+1599222,MEMORIAL RESOURCE DEVELOPMENT CORP.,included,,9,9,1.0,0,0
+1022646,ULTRA PETROLEUM CORP.,excluded: insufficient data,3 measurable TTM quarters in 2013Q1-2016Q4 (need 4),3,5,1.0,0,0
+351817,"SilverBow Resources, Inc.",included,,13,13,1.0,0,0
+874499,Gulfport Energy Corp,included,,16,16,1.0,0,1
+1528129,"Vital Energy, Inc.",included,,16,16,1.0,0,0
+1288403,"W&T OFFSHORE, INC.",included,,16,16,0.9375,0,0
+77159,RANGER OIL CORPORATION,included,,14,14,1.0,0,1
+1384072,"GRIZZLY ENERGY, LLC",included,,14,16,1.0,0,0
+316300,EXCO RESOURCES INC,included,,16,16,1.0,0,4
+1346980,"CHAPARRAL ENERGY, INC.",included,,16,16,1.0,0,1
+1172139,BILL BARRETT CORP,included,,16,16,1.0,0,5
+1509991,Kosmos Energy Ltd.,included,,15,16,1.0,2,3
+1533924,AMPLIFY ENERGY CORP.,included,,15,15,1.0,0,3
+1361937,Harvest Oil & Gas Corp.,included,,16,16,1.0,0,4
+23194,"COMSTOCK RESOURCES, INC.",included,,16,16,1.0,0,1
+1364541,EAGLE ROCK ENERGY PARTNERS L P,included,,10,10,1.0,0,0
+1040593,CARRIZO OIL & GAS INC,included,,15,16,1.0,0,1
+77877,"PDC Energy, Inc.",included,,16,16,1.0,0,0
+1273441,GRAN TIERRA ENERGY INC.,included,,14,16,0.9285714285714286,0,1
+750199,"EPL OIL & GAS, INC.",included,,5,5,1.0,0,0
+1335190,Magnum Hunter Resources Corp,included,,12,12,1.0,0,0
+1521847,AMPLIFY ENERGY CORP,included,,16,16,1.0,0,0
+1502012,"QR Energy, LP",included,,7,7,1.0,0,0
+38079,SABINE OIL & GAS CORP,included,,13,13,1.0,0,0
+1358831,LEGACY RESERVES LP,included,,15,16,1.0,0,1
+1528837,SANCHEZ ENERGY CORP,included,,16,16,1.0,0,0
+1509589,"Civitas Resources, Inc.",included,,16,16,1.0,0,1
+1112412,Endeavour International Corporation,included,,10,10,1.0,0,0
+1539838,"DIAMONDBACK ENERGY, INC.",included,,16,16,1.0,0,0
+1104485,"NORTHERN OIL AND GAS, INC.",included,,16,16,1.0,0,0
+1573166,"Jones Energy, Inc.",included,,14,13,1.0,0,0
+1469510,RESOLUTE ENERGY CORP,included,,16,16,0.8125,3,0
+1060990,QUICKSILVER RESOURCES INC,included,,11,11,1.0,0,1
+880115,CLAYTON WILLIAMS ENERGY INC /DE,included,,16,16,1.0,0,0
+1574648,Athlon Energy Inc.,included,,6,6,1.0,0,0
+1574672,Athlon Holdings LP,excluded: insufficient data,no capex tags,0,0,,0,0
+1173911,ENBRIDGE ENERGY MANAGEMENT L L C,excluded: insufficient data,no capex tags,0,0,,0,0
+844965,"TETRA Technologies, Inc.",included,,16,16,1.0,0,2
+1405073,APPROACH RESOURCES INC,included,,16,16,0.875,0,1
+1600470,MONTAGE RESOURCES CORP,included,,11,11,1.0,0,1
+1281922,TRIANGLE PETROLEUM CORP,included,,15,15,1.0,0,2
+1397516,REX ENERGY CORP,included,,16,16,1.0,0,6
+943861,GOODRICH PETROLEUM CORPORATION,included,,15,15,1.0,0,0
+1071993,CONTANGO OIL & GAS CO,included,,16,16,1.0,0,0
+1520006,Matador Resources Company,included,,16,16,1.0,0,3
+1588238,RICE ENERGY INC.,included,,12,13,1.0,0,2
+821483,"PAR PACIFIC HOLDINGS, INC.",included,,13,13,1.0,0,1
+1518403,"ALTA MESA HOLDINGS, LP",included,,16,16,1.0,0,1
+1594466,Pioneer PE Holding LLC,included,,11,11,1.0,0,1
+1588242,DENVER PARENT CORP,included,,9,10,1.0,0,0
+1313024,"VENOCO, INC.",excluded: insufficient data,3 measurable TTM quarters in 2013Q1-2016Q4 (need 4),3,2,1.0,0,0
+845289,"HARVEST NATURAL RESOURCES, INC.",included,,16,16,1.0,0,0
+785968,"MILLER ENERGY RESOURCES, INC.",included,,9,9,1.0,0,3
+872248,PETROQUEST ENERGY INC,included,,16,16,1.0,0,2
+1431372,GASTAR EXPLORATION INC.,included,,13,13,1.0,0,0
+1588216,"RSP PERMIAN, INC.",included,,12,13,1.0,0,0
+1518909,"Black Elk Energy Offshore Operations, LLC",included,,7,7,1.0,0,0

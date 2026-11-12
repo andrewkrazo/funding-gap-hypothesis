@@ -5,6 +5,8 @@ API documentation: https://www.sec.gov/search-filings/edgar-application-programm
 
 from __future__ import annotations
 
+from functools import lru_cache
+
 import pandas as pd
 
 from .config import DATA_RAW, sec_user_agent
@@ -21,10 +23,16 @@ def cik10(cik: int | str) -> str:
     return str(int(cik)).zfill(10)
 
 
-def companyfacts(cik) -> dict:
-    url = f"{BASE}/api/xbrl/companyfacts/CIK{cik10(cik)}.json"
-    path = DATA_RAW / "edgar" / "companyfacts" / f"CIK{cik10(cik)}.json.gz"
+@lru_cache(maxsize=None)
+def _companyfacts_cached(cik10_str: str) -> dict:
+    url = f"{BASE}/api/xbrl/companyfacts/CIK{cik10_str}.json"
+    path = DATA_RAW / "edgar" / "companyfacts" / f"CIK{cik10_str}.json.gz"
     return fetch_json(url, path, headers=_headers())
+
+
+def companyfacts(cik) -> dict:
+    """XBRL facts for one company (downloaded once, then cached in memory)."""
+    return _companyfacts_cached(cik10(cik))
 
 
 def submissions(cik) -> dict:

@@ -76,6 +76,14 @@ def pick_vintage(facts: pd.DataFrame, mode: str = "first") -> pd.DataFrame:
     return df.drop_duplicates(subset=["start", "end"], keep="first")
 
 
+def _tagset_pair(prev, cur) -> str:
+    """Optional bookkeeping: which tags built each YTD figure. If the two
+    figures being subtracted were built from different tags, that is marked
+    with '!=' so a mid-year change in how the firm tags capex is visible."""
+    a, b = getattr(prev, "tagset", ""), getattr(cur, "tagset", "")
+    return a if a == b else f"{a} != {b}"
+
+
 def to_quarterly(facts: pd.DataFrame, mode: str = "first") -> pd.DataFrame:
     """Return one row per fiscal quarter with a true (non-YTD) value.
 
@@ -98,7 +106,7 @@ def to_quarterly(facts: pd.DataFrame, mode: str = "first") -> pd.DataFrame:
     direct = df[(df["days"] >= QUARTER_MIN_DAYS) & (df["days"] <= QUARTER_MAX_DAYS)]
     for r in direct.itertuples():
         rows[r.end] = dict(start=r.start, end=r.end, value=r.val, method="direct",
-                           accn=r.accn, filed=r.filed)
+                           accn=r.accn, filed=r.filed, tagset=getattr(r, "tagset", ""))
 
     # 2) Year-to-date facts: within each fiscal year (same start date), the
     #    difference between consecutive YTD figures is one quarter.
@@ -114,12 +122,13 @@ def to_quarterly(facts: pd.DataFrame, mode: str = "first") -> pd.DataFrame:
                     rows[r.end] = dict(
                         start=prev.end + pd.Timedelta(days=1), end=r.end,
                         value=r.val - prev.val, method="ytd_diff",
-                        accn=f"{prev.accn}|{r.accn}", filed=f"{prev.filed}|{r.filed}")
+                        accn=f"{prev.accn}|{r.accn}", filed=f"{prev.filed}|{r.filed}",
+                        tagset=_tagset_pair(prev, r))
             prev = r
 
     if not rows:
         return pd.DataFrame(columns=["quarter", "start", "end", "value",
-                                     "method", "accn", "filed"])
+                                     "method", "accn", "filed", "tagset"])
     out = pd.DataFrame(rows.values()).sort_values("end").reset_index(drop=True)
     out.insert(0, "quarter", out["end"].map(calendar_quarter))
 
@@ -144,3 +153,74 @@ def trailing_four(quarterly: pd.DataFrame, value_col: str = "value") -> pd.Serie
     full_index = pd.period_range(s.index.min(), s.index.max(), freq="Q")
     s = s.reindex(full_index)  # missing quarters become NaN here
     return s.rolling(4, min_periods=4).sum()
+
+
+# ---------------------------------------------------------------------------
+# Trailing twelve months straight from the filings (the "LTM identity").
+#
+#     TTM at quarter q = last full fiscal year (10-K)
+#                        + year-to-date through q (this year's 10-Q)
+#                        - year-to-date through q one year earlier
+#
+# The last two numbers come from the SAME 10-Q (every 10-Q shows this year
+# and last year side by side), so they are always built from the same tags.
+# That avoids the artifact where a firm tags capex one way in its 10-Q and
+# another way in its 10-K, which breaks quarter-by-quarter subtraction.
+# At a fiscal year end, TTM is simply the full-year figure from the 10-K.
+# See CHANGELOG.md for why this replaced the quarter-sum method as primary.
+# ---------------------------------------------------------------------------
+
+def _days(start, end) -> int:
+    return (pd.Timestamp(end) - pd.Timestamp(start)).days + 1
+
+
+def ttm_from_filings(facts: pd.DataFrame, mode: str = "first") -> pd.DataFrame:
+    """One TTM value per calendar quarter, each built from at most two filings.
+
+    Output columns: quarter, ttm, method ("10-K full year" or "LTM identity"),
+    accn (the filing(s) used, "|"-joined), end (period end date).
+    """
+    df = facts[facts["form"].isin(PERIODIC_FORMS)].dropna(subset=["start", "end", "val"]).copy()
+    if df.empty:
+        return pd.DataFrame(columns=["quarter", "ttm", "method", "accn", "end"])
+    df["days"] = [_days(s, e) for s, e in zip(df["start"], df["end"])]
+    df = df.drop_duplicates(["accn", "start", "end"])
+    annual = df[(df["days"] >= 350) & (df["days"] <= YEAR_MAX_DAYS)]
+    first = mode == "first"
+
+    candidates = []
+    for accn, g in df.groupby("accn"):
+        cur_end = g["end"].max()
+        cur = g[(g["end"] == cur_end) & (g["days"] >= QUARTER_MIN_DAYS)]
+        if cur.empty:
+            continue
+        cur = cur.sort_values("days").iloc[-1]          # longest = year-to-date
+        filed = g["filed"].min()
+        if cur["days"] >= 350:                          # a full fiscal year
+            candidates.append(dict(end=cur_end, ttm=cur["val"], method="10-K full year",
+                                   accn=accn, filed=filed))
+            continue
+        # Same-length period ending about one year earlier, in the SAME filing.
+        cur_end_ts = pd.Timestamp(cur_end)
+        prior = g[[abs((pd.Timestamp(e) - (cur_end_ts - pd.DateOffset(years=1))).days) <= 10
+                   and abs(d - cur["days"]) <= 10 for e, d in zip(g["end"], g["days"])]]
+        if prior.empty:
+            continue
+        prior = prior.iloc[0]
+        # Last full fiscal year: ends the day before this fiscal year started.
+        fy_end = pd.Timestamp(cur["start"]) - pd.Timedelta(days=1)
+        fy = annual[[abs((pd.Timestamp(e) - fy_end).days) <= 7 for e in annual["end"]]]
+        if fy.empty:
+            continue
+        fy = fy.sort_values(["filed", "accn"], ascending=[first, first]).iloc[0]
+        candidates.append(dict(end=cur_end, ttm=fy["val"] + cur["val"] - prior["val"],
+                               method="LTM identity", accn=f"{fy['accn']}|{accn}", filed=filed))
+
+    if not candidates:
+        return pd.DataFrame(columns=["quarter", "ttm", "method", "accn", "end"])
+    out = pd.DataFrame(candidates)
+    out["quarter"] = out["end"].map(calendar_quarter)
+    # Amendments can give two candidates for one quarter: pick by vintage.
+    out = out.sort_values(["quarter", "filed", "accn"], ascending=[True, first, first])
+    out = out.drop_duplicates("quarter", keep="first")
+    return out[["quarter", "ttm", "method", "accn", "end"]].reset_index(drop=True)
