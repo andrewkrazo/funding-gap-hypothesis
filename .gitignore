@@ -10,3 +10,6 @@ venv/
 # They are re-downloaded locally by the scripts with your own FRED key.
 data/raw/fred/BAML*_observations.json.gz
 data/raw/fred/BAA10Y_observations.json.gz
+
+# Local-only copies of restricted data (never published)
+data/local/

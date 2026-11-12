@@ -52,6 +52,29 @@ def build_quarterly() -> pd.DataFrame:
     return pd.concat(rows, ignore_index=True)
 
 
+def amazon_annual() -> pd.DataFrame:
+    """Annual 10-K check for Amazon's quarterly gap years (see data/tag_map.csv).
+    Gross capex (current definition) vs operating cash flow, FY2016-FY2018,
+    each value from the earliest 10-K that reports it."""
+    from fundgap import edgar
+    cf = edgar.companyfacts(1018724)
+    rows = []
+    for series, tag in [("capex_gross", "PaymentsToAcquireProductiveAssets"),
+                        ("ocf", "NetCashProvidedByUsedInOperatingActivities")]:
+        d = edgar.facts_for_tag(cf, tag)
+        d = d[(d["form"] == "10-K") & d["start"].str.endswith("-01-01")
+              & d["end"].str.endswith("-12-31") & d["end"].str[:4].isin(["2016", "2017", "2018"])]
+        d = d.sort_values("filed").drop_duplicates("end")
+        for r in d.itertuples():
+            rows.append(dict(fiscal_year=int(r.end[:4]), series=series, tag=tag, value_usd=r.val,
+                             accn=r.accn, filed=r.filed,
+                             source_url=edgar.filing_index_url(1018724, r.accn)))
+    out = pd.DataFrame(rows)
+    wide = out.pivot(index="fiscal_year", columns="series", values="value_usd")
+    ratio = (wide["capex_gross"] / wide["ocf"]).round(3).rename("capex_to_ocf")
+    return out.merge(ratio, left_on="fiscal_year", right_index=True)
+
+
 def build_ttm(quarterly: pd.DataFrame, lenders: pd.DataFrame) -> pd.DataFrame:
     out = []
     for (company, vintage), g in quarterly.groupby(["company", "vintage"]):
@@ -105,7 +128,7 @@ def fig_capex_vs_ocf(ttm: pd.DataFrame, path: Path):
             dashed = cs == "capex_net_old"
             ax.plot(to_ts(s.index), s.values, color=CAPEX_COLOR, lw=2,
                     ls="--" if dashed else "-",
-                    label="Capex (old net-of-incentives definition)" if dashed else "Capex")
+                    label="Capex")
             short = gg[gg["shortfall"] == True]
             for q in short["quarter"]:
                 ax.axvspan(q.start_time, q.end_time, color=CAPEX_COLOR, alpha=0.12, lw=0)
@@ -146,8 +169,11 @@ def fig_ratio(ttm: pd.DataFrame, path: Path):
 
 
 def fig_lenders(lenders: pd.DataFrame, path: Path):
+    """Plots the Fed survey (public domain). The BAA10Y side check is Moody's
+    copyrighted data, so only its yes/no flag is shown, never its values."""
     l = lenders.loc[pd.Period(FIRST_Q):pd.Period(LAST_Q)]
-    fig, (a1, a2) = plt.subplots(2, 1, figsize=(8, 6), sharex=True)
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=(8, 5), sharex=True,
+                                 gridspec_kw={"height_ratios": [4, 1]})
     style(a1); style(a2)
     x = to_ts(l.index)
     colors = [CAPEX_COLOR if v > 0 else MUTED for v in l["drtscilm"]]
@@ -155,12 +181,12 @@ def fig_lenders(lenders: pd.DataFrame, path: Path):
     a1.axhline(0, color=INK2, lw=1)
     a1.set_title("Banks tightening loan standards, net % (FRED DRTSCILM). "
                  "Orange = above 0 = 'lenders step back'", loc="left", fontsize=9, color=INK)
-    a2.plot(x, l["baa10y_qavg"], color=OCF_COLOR, lw=2, label="Quarterly average")
-    a2.plot(x, l["baa10y_trailing20_median"], color=MUTED, lw=1.5, ls="--",
-            label="Median of previous 20 quarters")
-    a2.set_title("Side check: Baa corporate yield minus 10-yr Treasury, percentage points (FRED BAA10Y)",
-                 loc="left", fontsize=9, color=INK)
-    a2.legend(fontsize=7, frameon=False)
+    flag = l["baa10y_flag"].astype("boolean")
+    a2.bar(x, flag.fillna(False).astype(int), width=60, color=OCF_COLOR)
+    a2.set_yticks([])
+    a2.grid(False)
+    a2.set_title("Side check: Baa credit spread above its 5-year median (FRED BAA10Y, Moody's; "
+                 "flag only, values not redistributed)", loc="left", fontsize=8, color=INK)
     fig.text(0.01, 0.005, "Survey readings are placed in the quarter they describe "
              "(survey dated the start of the next quarter).", fontsize=7, color=INK2)
     fig.tight_layout(rect=(0, 0.02, 1, 1))
@@ -178,7 +204,16 @@ def main():
 
     quarterly.to_csv(DATA_CLEAN / "stage1_quarterly.csv", index=False)
     ttm.to_csv(DATA_CLEAN / "stage1_ttm.csv", index=False)
-    lenders.loc[pd.Period("2010Q1"):].to_csv(DATA_CLEAN / "lender_proxies.csv")
+    # Public table: Fed survey values + the BAA10Y yes/no flag only. Moody's
+    # values stay in a local, git-ignored file (redistribution restricted).
+    public_cols = ["drtscilm", "drtscilm_survey_date", "lender_step_back",
+                   "baa10y_flag", "drtscilm_source", "baa10y_source"]
+    lenders.loc[pd.Period("2010Q1"):, public_cols].to_csv(DATA_CLEAN / "lender_proxies.csv")
+    local = ROOT / "data" / "local"
+    local.mkdir(parents=True, exist_ok=True)
+    lenders.to_csv(local / "lender_proxies_full.csv")
+
+    amazon_annual().to_csv(DATA_CLEAN / "stage1_amazon_annual.csv", index=False)
 
     fig_capex_vs_ocf(ttm, FIGURES / "stage1_capex_vs_ocf.png")
     fig_ratio(ttm, FIGURES / "stage1_capex_to_ocf.png")

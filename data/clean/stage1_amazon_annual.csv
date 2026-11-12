@@ -1,0 +1,7 @@
+fiscal_year,series,tag,value_usd,accn,filed,source_url,capex_to_ocf
+2016,capex_gross,PaymentsToAcquireProductiveAssets,7804000000,0001018724-19-000004,2019-02-01,https://www.sec.gov/Archives/edgar/data/1018724/000101872419000004/0001018724-19-000004-index.htm,0.475
+2017,capex_gross,PaymentsToAcquireProductiveAssets,11955000000,0001018724-19-000004,2019-02-01,https://www.sec.gov/Archives/edgar/data/1018724/000101872419000004/0001018724-19-000004-index.htm,0.649
+2018,capex_gross,PaymentsToAcquireProductiveAssets,13427000000,0001018724-19-000004,2019-02-01,https://www.sec.gov/Archives/edgar/data/1018724/000101872419000004/0001018724-19-000004-index.htm,0.437
+2016,ocf,NetCashProvidedByUsedInOperatingActivities,16443000000,0001018724-17-000011,2017-02-10,https://www.sec.gov/Archives/edgar/data/1018724/000101872417000011/0001018724-17-000011-index.htm,0.475
+2017,ocf,NetCashProvidedByUsedInOperatingActivities,18434000000,0001018724-18-000005,2018-02-02,https://www.sec.gov/Archives/edgar/data/1018724/000101872418000005/0001018724-18-000005-index.htm,0.649
+2018,ocf,NetCashProvidedByUsedInOperatingActivities,30723000000,0001018724-19-000004,2019-02-01,https://www.sec.gov/Archives/edgar/data/1018724/000101872419000004/0001018724-19-000004-index.htm,0.437
