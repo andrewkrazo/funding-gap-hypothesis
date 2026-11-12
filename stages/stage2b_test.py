@@ -275,6 +275,18 @@ def main():
           "no 2013-2019 bankruptcy:")
     print(post[["entity_name", "event_date", "label_in_headline_test"]].to_string(index=False))
 
+    # ---- Context number quoted in RESULTS.md: the 2014-16 oil price fall ------
+    from fundgap import fred
+    wti = fred.observations("DCOILWTICO").dropna(subset=["value"])
+    hi = wti[wti["date"].dt.year == 2014].nlargest(1, "value").iloc[0]
+    lo = wti[wti["date"].dt.year.isin([2015, 2016])].nsmallest(1, "value").iloc[0]
+    pd.DataFrame([dict(point="2014 high", date=hi["date"].date(), usd=hi["value"]),
+                  dict(point="2015-16 low", date=lo["date"].date(), usd=lo["value"])]).assign(
+        source="https://fred.stlouisfed.org/series/DCOILWTICO").to_csv(
+        DATA_CLEAN / "wti_2014_2016_high_low.csv", index=False)
+    print(f"\nWTI: {hi['value']} on {hi['date'].date()} -> {lo['value']} on {lo['date'].date()} "
+          f"({lo['value'] / hi['value'] - 1:.1%})")
+
 
 if __name__ == "__main__":
     main()

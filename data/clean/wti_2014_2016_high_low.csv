@@ -1,0 +1,3 @@
+point,date,usd,source
+2014 high,2014-06-20,107.95,https://fred.stlouisfed.org/series/DCOILWTICO
+2015-16 low,2016-02-11,26.19,https://fred.stlouisfed.org/series/DCOILWTICO

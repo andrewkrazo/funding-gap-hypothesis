@@ -302,3 +302,4 @@ https://data.sec.gov/submissions/CIK0000872248-submissions-001.json,2026-11-12T1
 https://data.sec.gov/submissions/CIK0001431372.json,2026-11-12T17:10:36Z,data/raw/edgar/submissions/CIK0001431372.json.gz,67a4fca4f899d17f699bbc6099dd341ca3c0195d1749a839c7a672f102d36795
 https://data.sec.gov/submissions/CIK0001588216.json,2026-11-12T17:10:36Z,data/raw/edgar/submissions/CIK0001588216.json.gz,704fd5f623c067fb73d593f6b17e3bc6bd2416949a19e9dbfe5c0c0caad85e41
 https://data.sec.gov/submissions/CIK0001518909.json,2026-11-12T17:10:37Z,data/raw/edgar/submissions/CIK0001518909.json.gz,4095e0a7cf0d3efd4463839fca082a89850052de962ba912a0a66404a5156b75
+https://api.stlouisfed.org/fred/series/observations?series_id=DCOILWTICO&api_key=REDACTED&file_type=json,2026-11-12T17:15:56Z,data/raw/fred/DCOILWTICO_observations.json.gz,d1af3e95663cf073f83490ce8addb9bb5110f6f3fccd428537b5effe2f9928ca
