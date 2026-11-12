@@ -4,6 +4,61 @@ Every change to a definition, threshold or universe in `RULE.md` after its first
 is logged here with the date, the reason, and whether any data had been seen. Results
 are reported under both the old and new versions.
 
+## v1.5.1 — 2026-11-12 (version 2 validation; logged BEFORE any test result)
+- Fresh sample of 25 v2 cuts (seed 43), judged by hand in
+  `data/clean/bbase_validation_precision_v2_reviewed.csv`:
+  - **15 clear lender cuts (60%);**
+  - 5 still mechanical: wording the filter misses, such as "as a result of the sale,"
+    "upon the closing of this transaction," "subsequent to these transactions";
+  - 5 unclear.
+
+  Accuracy is 60%, or 75% with the unclear cases set aside: still below 80%.
+- Decision: **no further rule changes.** Revising until the check passes would be its own
+  forking path. Both versions are run and reported, and the measure is described as noisy.
+
+## v1.5 — 2026-11-12 (addendum A2 validation FAILED; extraction revised; logged BEFORE any test result)
+**What the pre-registered validation found** (RULE.md 7.4; judgments in
+`data/clean/bbase_validation_precision_reviewed.csv`):
+- **Text accuracy is high:** about 23 of 25 sampled sentences really do describe a
+  borrowing-base reduction.
+- **Accuracy against the thing being measured is not:** only **10 of 25 (40%)** were the
+  firm's lenders cutting its credit. 13 were not:
+  - 12 mechanical reductions: automatic cuts when the firm issued bonds or did an IPO or
+    offering, cuts from selling oil and gas assets, a post-bankruptcy plan;
+  - 1 real lender cut retold two years later, so it carried the wrong date.
+
+  2 were unclear.
+- That is below the pre-registered 80% bar, so per RULE.md 7.4 the extraction rule is
+  revised here and **both versions are reported**.
+
+**Recall check:** 1 of 10 no-cut documents contained a missed cut. Northern Oil's May
+2016 redetermination "established" the borrowing base at $350M, with no "reduced to"
+wording. Misses like this can only weaken the signal; they can't create false ones. This
+is disclosed, not fixed.
+
+**Version 2 of the extraction (`find_cut(..., strict=True)`):**
+1. A sentence is excluded if it mentions a mechanical trigger: issuing or offering notes
+   or shares, an IPO, an asset sale, divestiture or disposition, an "automatic"
+   reduction, or a bankruptcy plan or emergence.
+2. Duplicates: the same new amount (within 1%) is the same cut **whenever** it is retold
+   (v1 used a 270-day limit). The earliest filing still dates the cut.
+3. Amounts under $1 million are discarded as parsing errors.
+
+**Validating v2:** a **fresh** random sample of 25 v2 cuts (seed 43) is checked by hand
+before the test is run. Re-checking the old sample would be circular, since it was used
+to design v2. If v2 is still below 80%, both versions are still reported and the
+shortfall is stated plainly.
+
+## v1.4.1 — 2026-11-12 (data-collection bug fix; no rule change; no results had been looked at)
+- The first borrowing-base download passed the form filter
+  "10-K,10-Q,8-K,10-K/A,10-Q/A,8-K/A" to EDGAR full-text search. That list makes the
+  search return mostly amended filings: 133 filings from 52 firms, against 76 firms found
+  in the feasibility count. Using "10-K,10-Q,8-K", which already includes amendments,
+  fixes it (checked on SandRidge: 86 documents instead of 5).
+- The download was deleted and redone. The extraction rules (`find_cut`) are unchanged.
+  The only thing seen from the bad download was its summary counts (43 cut sentences,
+  26 cuts at 13 firms); no labels or results.
+
 ## v1.4 — 2026-11-12 (addendum A2; logged BEFORE the borrowing-base data is pulled)
 - Added RULE.md section 7: a follow-up test with a **firm-level** lender measure (cuts
   to each firm's borrowing base, read from its own filings). Definitions, extraction

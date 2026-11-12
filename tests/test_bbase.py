@@ -68,3 +68,32 @@ def test_flag_covers_report_quarter_and_next():
 def test_month_may_is_not_hypothetical():
     c = find_cut("In May 2016, the borrowing base was reduced from $600 million to $450 million.")
     assert c["new"] == 450e6
+
+
+# ---- Version 2 (CHANGELOG v1.5): mechanical reductions are not lender pullbacks ----
+
+def test_v2_excludes_reduction_triggered_by_bond_issue():
+    s = "Upon the issuance of the senior notes, the borrowing base was automatically reduced to $600 million."
+    assert find_cut(s) is not None          # version 1 counted these
+    assert find_cut(s, strict=True) is None  # version 2 does not
+
+
+def test_v2_excludes_reduction_after_asset_sale():
+    s = "Following the sale of our Permian properties, the borrowing base was reduced from $400 million to $300 million."
+    assert find_cut(s, strict=True) is None
+
+
+def test_v2_keeps_redetermination_cut():
+    s = "As part of the spring redetermination, the borrowing base was reduced from $475.0 million to $200.0 million."
+    assert find_cut(s, strict=True)["new"] == 200e6
+
+
+def test_v2_drops_impossible_amounts():
+    s = "The borrowing base was decreased by the lenders to $2 85 million."
+    assert find_cut(s, strict=True) is None
+
+
+def test_v2_dedupes_retold_cuts_at_any_distance():
+    cuts = pd.DataFrame(dict(file_date=["2017-11-08", "2019-03-06"], new=[450e6, 450e6]))
+    assert len(dedupe_cuts(cuts)) == 2                    # version 1: 270-day limit
+    assert len(dedupe_cuts(cuts, window_days=None)) == 1  # version 2: same cut

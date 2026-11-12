@@ -30,7 +30,9 @@ from .config import DATA_RAW, sec_user_agent
 
 SENTENCES_FILE = DATA_RAW / "edgar" / "borrowing_base_sentences.jsonl.gz"
 EFTS = "https://efts.sec.gov/LATEST/search-index"
-FORMS = "10-K,10-Q,8-K,10-K/A,10-Q/A,8-K/A"
+# Listing amended forms ("10-K/A") in the filter breaks the search (it then returns
+# mostly amendments); the plain list already returns amendments too. See CHANGELOG v1.4.1.
+FORMS = "10-K,10-Q,8-K"
 
 # ---------------------------------------------------------------------------
 # Step 3: the frozen rules
@@ -66,12 +68,34 @@ def _from_amount(mid: str) -> float | None:
     return to_dollars(m.group(1), m.group(2)) if m else None
 
 
-def find_cut(sentence: str) -> dict | None:
+# Version 2 (CHANGELOG v1.5): reductions with a mechanical trigger are not lenders
+# stepping back. Most common: loan agreements that automatically shrink the borrowing
+# base when the firm issues bonds, and cuts that follow selling oil and gas assets.
+MECHANICAL = re.compile(
+    r"\b(issu(e|ed|ance|ing)|offering|notes?\b|initial public|IPO|divest\w*|dispos\w*|"
+    r"sale of|sold|automatic(ally)?|plan of reorganization|the Plan\b|emergence|chapter 11)",
+    re.I)
+MIN_AMOUNT = 1e6  # a borrowing base under $1 million is a parsing error
+
+
+def find_cut(sentence: str, strict: bool = False) -> dict | None:
     """Return {'new': $, 'old': $ or None, 'rule': id} if the sentence reports a
-    borrowing-base cut by lenders, else None."""
+    borrowing-base cut by lenders, else None.
+
+    strict=False is version 1 (pre-registered). strict=True is version 2, which
+    also excludes mechanical reductions and impossible amounts (CHANGELOG v1.5)."""
     s = re.sub(r"\s+", " ", sentence)
     if "borrowing base" not in s.lower() or VOLUNTARY.search(s):
         return None
+    if strict and MECHANICAL.search(s):
+        return None
+    c = _find_cut_v1(s)
+    if strict and c is not None and c["new"] < MIN_AMOUNT:
+        return None
+    return c
+
+
+def _find_cut_v1(s: str) -> dict | None:
     # Rule 3 first: an explicit "from $X to $Y" decides direction unambiguously.
     for m in P_FROM_TO.finditer(s):
         old = to_dollars(m.group(1), m.group(2))
@@ -95,16 +119,18 @@ def find_cut(sentence: str) -> dict | None:
 # Step 4: cuts -> quarterly flag
 # ---------------------------------------------------------------------------
 
-def dedupe_cuts(cuts: pd.DataFrame) -> pd.DataFrame:
+def dedupe_cuts(cuts: pd.DataFrame, window_days: int | None = 270) -> pd.DataFrame:
     """One row per distinct cut: the same new amount (within 1%) reported again
-    within 270 days is the same cut. Keeps the earliest public report."""
+    is the same cut. Keeps the earliest public report.
+    window_days=270 is version 1; None (any time later) is version 2."""
     if cuts.empty:
         return cuts
     cuts = cuts.sort_values("file_date")
     kept = []
     for r in cuts.itertuples():
         d = pd.Timestamp(r.file_date)
-        dup = any(abs(r.new - k.new) <= 0.01 * k.new and (d - pd.Timestamp(k.file_date)).days <= 270
+        dup = any(abs(r.new - k.new) <= 0.01 * k.new and
+                  (window_days is None or (d - pd.Timestamp(k.file_date)).days <= window_days)
                   for k in kept)
         if not dup:
             kept.append(r)
@@ -127,13 +153,18 @@ def firm_flag(cuts: pd.DataFrame, quarters: pd.PeriodIndex) -> pd.Series:
 # ---------------------------------------------------------------------------
 
 def _get(url, params=None, tries=4):
+    last = None
     for k in range(tries):
-        r = requests.get(url, params=params, headers={"User-Agent": sec_user_agent()}, timeout=90)
-        time.sleep(0.15)
-        if r.status_code == 200:
-            return r
-        time.sleep(2 * (k + 1))
-    raise RuntimeError(f"Download failed ({r.status_code}) for {r.url}")
+        try:
+            r = requests.get(url, params=params, headers={"User-Agent": sec_user_agent()}, timeout=90)
+            time.sleep(0.15)
+            if r.status_code == 200:
+                return r
+            last = f"status {r.status_code}"
+        except requests.exceptions.RequestException as e:  # dropped connection, timeout
+            last = repr(e)
+        time.sleep(5 * (k + 1))
+    raise RuntimeError(f"Download failed ({last}) for {url}")
 
 
 def search_documents(cik: int, start="2012-01-01", end="2019-12-31") -> list[dict]:
@@ -142,7 +173,11 @@ def search_documents(cik: int, start="2012-01-01", end="2019-12-31") -> list[dic
     while True:
         r = _get(EFTS, params={"q": '"borrowing base"', "dateRange": "custom", "startdt": start,
                                "enddt": end, "ciks": f"{int(cik):010d}", "forms": FORMS, "from": frm})
-        hits = r.json()["hits"]["hits"]
+        j = r.json()
+        if "hits" not in j:  # occasional error payload: wait and retry this page
+            time.sleep(3)
+            continue
+        hits = j["hits"]["hits"]
         for h in hits:
             adsh, fname = h["_id"].split(":", 1)
             src = h["_source"]
