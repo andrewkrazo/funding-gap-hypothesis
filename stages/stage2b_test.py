@@ -116,6 +116,80 @@ def run_variant(universe, status, ttm, lenders, version, bust_def, lender_col, v
     return pd.DataFrame(out)
 
 
+# Firms with a bankruptcy shown by evidence other than their own Item 1.03 8-K
+# (used only in the post-hoc sensitivity below; the pre-registered B1 is unchanged).
+OTHER_EVIDENCE_BUSTS = {
+    # EPL Oil & Gas: its own 10-Q (accession 0001144204-16-102037, filed 2016-05-16)
+    # reports DebtorReorganizationItemsLegalAndAdvisoryProfessionalFees; its parent
+    # Energy XXI Ltd filed Chapter 11 per Item 1.03 8-K 0001144204-16-094204 (2016-04-14).
+    750199: ("2016Q2", "2016-04-14"),
+}
+
+POSTHOC = {
+    "symmetric_window_12q": "busts credited only for signals in 2013Q1-2016Q4 AND in the 12 quarters before the bust",
+    "symmetric_window_any": "busts credited for any signal in 2013Q1 to min(2016Q4, quarter before bust)",
+    "signal_public_before_bust": "signal must have been PUBLIC before the bankruptcy date (survey first-release "
+                                 "date from ALFRED and filing dates of the 10-Q/10-K used)",
+    "exclude_could_never_signal": "drop firms with no measurable shortfall in any scoring-window quarter when "
+                                  "lenders were stepping back",
+    "epl_counted_as_bust": "count EPL Oil & Gas as bankrupt in 2016Q2 (evidence outside its own 8-Ks)",
+}
+
+
+def posthoc_checks(head: pd.DataFrame, ttm: pd.DataFrame, lenders: pd.DataFrame,
+                   status: pd.DataFrame) -> pd.DataFrame:
+    """Peer-review checks added AFTER results were seen (CHANGELOG v1.3). They are
+    labeled post-hoc and never replace the pre-registered headline. See POSTHOC."""
+    from fundgap import fred
+    lender = lenders["lender_step_back"].reindex(QUARTERS).astype("boolean").fillna(False)
+    released = fred.first_release_dates("DRTSCILM")
+    rows = []
+    for r in head.itertuples():
+        sf, _ = firm_series(ttm, r.cik, "ltm", "first")
+        sig = (sf & lender).fillna(False)
+        b = pd.Period(r.bust_quarter) if isinstance(r.bust_quarter, str) and r.bust_quarter else None
+        row = dict(cik=r.cik)
+        if b is None:
+            win = (sig.index >= WINDOW[0]) & (sig.index <= WINDOW[1])
+            base = "FP" if sig[win].any() else "TN"
+            for k in POSTHOC:
+                row[k] = base
+            could = sf[win & lender.values].notna().any()
+            row["exclude_could_never_signal"] = base if could else None
+            if r.cik in OTHER_EVIDENCE_BUSTS:
+                row["epl_counted_as_bust"] = label_firm(sf, lender, pd.Period(OTHER_EVIDENCE_BUSTS[r.cik][0]))["label"]
+            rows.append(row)
+            continue
+        pre_mask = (sig.index >= b - 12) & (sig.index <= b - 1)
+        base = "TP" if sig[pre_mask].any() else "FN"
+        row["epl_counted_as_bust"] = base
+        row["symmetric_window_12q"] = "TP" if sig[pre_mask & (sig.index >= WINDOW[0]) & (sig.index <= WINDOW[1])].any() else "FN"
+        row["symmetric_window_any"] = "TP" if sig[(sig.index >= WINDOW[0]) & (sig.index <= min(WINDOW[1], b - 1))].any() else "FN"
+        could = sf[pre_mask & lender.values].notna().any()
+        row["exclude_could_never_signal"] = base if could else None
+        # When did each signal quarter become public?
+        bust_date = pd.Timestamp(status.loc[r.cik, "b1_date"])
+        filed = all_filings(r.cik).set_index("accessionNumber")["filingDate"].to_dict()
+        t = ttm[(ttm["cik"] == r.cik) & (ttm["method"] == "ltm") & (ttm["vintage"] == "first")].set_index("quarter")
+        public_ok = False
+        for q in sig[pre_mask & sig.values].index:
+            dates = [released.get((q + 1).start_time)]
+            for col in ("capex_accn", "ocf_accn"):
+                if q in t.index and isinstance(t.loc[q, col], str):
+                    dates += [filed.get(a) for a in t.loc[q, col].split("|")]
+            if all(d is not None and not pd.isna(d) for d in dates) and \
+                    max(pd.Timestamp(d) for d in dates) < bust_date:
+                public_ok = True
+                break
+        row["signal_public_before_bust"] = "TP" if public_ok else "FN"
+        rows.append(row)
+    d = pd.DataFrame(rows)
+    out = []
+    for k, desc in POSTHOC.items():
+        out.append(dict(check=k, description=desc, **confusion(d[k].dropna())))
+    return pd.DataFrame(out)
+
+
 def timeline_figure(labels: pd.DataFrame, ttm: pd.DataFrame, lenders: pd.DataFrame, path: Path):
     order = {"TP": 0, "FN": 1, "untestable": 2, "FP": 3, "TN": 4}
     titles = {"TP": "Busted, signal came first (TP)", "FN": "Busted, no signal (FN, miss)",
@@ -205,6 +279,9 @@ def main():
     ttm = pd.read_csv(DATA_CLEAN / f"{PREFIX}_ttm.csv")
     ttm["quarter"] = pd.PeriodIndex(ttm["quarter"], freq="Q")
     lenders = lender_table()
+    gaps = lenders.loc[QUARTERS[0]:QUARTERS[-1], "drtscilm"].isna()
+    if gaps.any():
+        raise RuntimeError(f"DRTSCILM missing for {list(gaps[gaps].index)}: stop, do not treat as 'no step-back'")
 
     events, status = firm_status(universe)
     events.to_csv(DATA_CLEAN / f"{PREFIX}_bankruptcy_8k_events.csv", index=False)
@@ -228,6 +305,11 @@ def main():
     head_b = labels[(labels.version == "B") & (labels.bust == "B1") & (labels.lender == "lender_step_back")
                     & (labels.vintage == "first") & (labels.exits == "kept")]
     timeline_figure(head_b, ttm, lenders, FIGURES / f"{PREFIX}_firm_timeline.png")
+    ph = posthoc_checks(head_b, ttm, lenders, status_i)
+    ph.to_csv(DATA_CLEAN / f"{PREFIX}_posthoc_checks.csv", index=False)
+    print("\nPost-hoc peer-review checks (NOT pre-registered; headline settings):")
+    print(ph[["check", "n", "TP", "FN", "FP", "TN", "bust_rate_if_signal", "base_rate_no_signal",
+              "fisher_p", "probabilistic_reading"]].to_string(index=False))
     rates_figure(results, FIGURES / f"{PREFIX}_bust_rates.png")
 
     # ---- Printed report ------------------------------------------------------

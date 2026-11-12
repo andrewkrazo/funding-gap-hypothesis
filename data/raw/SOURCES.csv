@@ -366,3 +366,7 @@ https://data.sec.gov/submissions/CIK0001013237-submissions-001.json,2026-11-12T1
 https://data.sec.gov/submissions/CIK0001056386.json,2026-11-12T17:45:38Z,data/raw/edgar/submissions/CIK0001056386.json.gz,d3f98c7192cce94049c084cb2dafd92516162f7c64bb6ee7b7c12fb90de5e406
 https://data.sec.gov/submissions/CIK0001056386-submissions-001.json,2026-11-12T17:45:38Z,data/raw/edgar/submissions/CIK0001056386-submissions-001.json.gz,08d55094712fd3858200069b77fe3b3778994ab5db5b8ee7861b36c019316fe9
 https://data.sec.gov/submissions/CIK0001595761.json,2026-11-12T17:45:39Z,data/raw/edgar/submissions/CIK0001595761.json.gz,ccd444fb1a79079366502a7386aa54d33696cab061a86ffdc8340235abaa1ec8
+https://data.sec.gov/submissions/CIK0001343719.json,2026-11-12T18:20:49Z,data/raw/edgar/submissions/CIK0001343719.json.gz,ce7393d04231e450d83895888db20bd2f7ca0abcbe0146b8818a832935aebe6a
+https://data.sec.gov/submissions/CIK0001343719-submissions-001.json,2026-11-12T18:20:50Z,data/raw/edgar/submissions/CIK0001343719-submissions-001.json.gz,76c1beabe52bc82f4c7e0f54b6ce333b7133f766024259e41dec2d07789d7466
+https://data.sec.gov/submissions/CIK0001532750.json,2026-11-12T18:20:50Z,data/raw/edgar/submissions/CIK0001532750.json.gz,e3b1e646c25f6f7e1ad1474c3232b23cab7df6f7d914dee3682b696339d4458f
+https://api.stlouisfed.org/fred/series/observations?series_id=DRTSCILM&api_key=REDACTED&file_type=json&realtime_start=1776-07-04&realtime_end=9999-12-31,2026-11-12T18:22:42Z,data/raw/fred/DRTSCILM_all_vintages.json.gz,3a1d150c0269737c47a712f1cb54788a4d1dcbeba826cd6f1fc2c9bd43ec3f69

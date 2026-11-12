@@ -19,7 +19,7 @@ against history rather than mining history for what worked. Sources are in
 
 **In this pilot the rule failed.** Among 93 SEC-registered oil and gas companies
 (2013–2019), firms that showed the signal went bankrupt *less* often than firms that
-didn't: 30% vs 53%, p = 0.10, n = 93. The main reason: almost every producer outspent its
+didn't: 30% vs 47%, p = 0.18, n = 93. The main reason: almost every producer outspent its
 cash flow in 2013–15, and the bank-tightening measure turned on for everyone at once in
 2015, so the signal couldn't separate failures from survivors. A pre-registered,
 mechanically chosen comparison boom (computer services, SIC 7370, 2011–14) had no
@@ -60,10 +60,10 @@ estimated or filled in: missing stays missing.
 
 1. **Pre-register** ([RULE.md](RULE.md)), committed before any data was downloaded.
 2. **Pick the sample mechanically:** SIC 1311 × assets ≥ $500M at 2013 year end. That
-   gives 101 firms, and 93 have enough data. Because the source still lists companies
+   gives 101 firms; 94 have enough data (93 after dropping a duplicate parent/subsidiary filer). Because the source still lists companies
    that later failed or were acquired, the sample isn't limited to survivors.
 3. **Build cash-flow series** from XBRL. Year-to-date figures are differenced, and the
-   trailing-twelve-month identity is used where firms re-tag lines between filings
+   trailing-twelve-month identity (each year-to-date comparison inside one 10-Q) is used where firms re-tag lines between filings
    ([LEARN.md](LEARN.md) §3–4). The tag map and these tables were committed **before**
    any bankruptcy data was downloaded.
 4. **Label busts** from 8-K Item 1.03 and run the pre-registered 2×2 test.
@@ -76,7 +76,9 @@ estimated or filled in: missing stays missing.
 - The lender measure is economy-wide, so it can't vary across firms.
 - The oil-price collapse caused both shortfalls and bankruptcies (confounding).
 - The bankruptcy measure misses firms that deregistered first and out-of-court defaults.
-- The window ends in 2019 as pre-registered; six "survivors" filed for bankruptcy in 2020.
+- The window ends in 2019 as pre-registered; seven firms with no bankruptcy by then (six of them false alarms) filed in 2020.
+- One economy-wide survey and one oil shock drive everything, so firms are not independent and p-values overstate the evidence.
+- An independent peer review found and corrected one mislabeled bankruptcy (RESULTS.md section 8).
 - SIC 1311 includes a few non-producers.
 
 ## Stage 1 (descriptive only): five large tech spenders

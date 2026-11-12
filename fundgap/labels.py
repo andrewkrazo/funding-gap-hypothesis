@@ -37,8 +37,16 @@ def label_firm(shortfall: pd.Series, lender: pd.Series, bust_q: pd.Period | None
         if sig.fillna(False).any():
             return dict(label="TP", reason="signal before bust",
                         first_signal=str(sig[sig.fillna(False)].index.min()))
-        reason = ("shortfall but lenders not stepping back" if sf.fillna(False).any()
-                  else "no shortfall: cash flow covered spending")
+        # Why it was missed, judged only on the 12 quarters before the bust.
+        lend = _slice(lender, a, b)
+        if not lend.any():
+            reason = "lenders never stepped back in the 12 quarters before the bust"
+        elif sf[lend.reindex(sf.index).fillna(False).astype(bool)].notna().sum() == 0:
+            reason = "no data in the quarters when lenders were stepping back"
+        elif sf.fillna(False).any():
+            reason = "shortfall, but never while lenders were stepping back"
+        else:
+            reason = "no shortfall in the 12 quarters before the bust"
         return dict(label="FN", reason=reason, first_signal=None)
 
     sig = _slice(signal, *WINDOW).fillna(False)

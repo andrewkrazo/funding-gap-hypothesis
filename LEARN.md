@@ -29,7 +29,7 @@ date window. Try enough combinations and *something* will look significant by ch
 
 **Here.** Instead of picking one combination, the project reports **all 32**
 pre-specified variants (`data/clean/stage2_results_all_variants.csv`). The answer is
-the same across them, which is more convincing than any single run.
+the same direction across them: 28 "not supported" and 4 "mixed" (all B2 × BAA10Y), none favoring the rule with p < 0.05. That's more convincing than any single run. Caution: the variants share most of their data, so they are not 32 independent confirmations.
 
 ## 3. Year-to-date (YTD) figures: the 10-Q trap
 
@@ -64,7 +64,8 @@ quarter.
 
 > "Cash-flow numbers in 10-Qs are year-to-date, so you have to difference them. And when
 > firms re-tag lines between their 10-Q and 10-K, even differencing breaks, so I used
-> the LTM identity, where the pieces come from a single filing."
+> the LTM identity, where the year-to-date comparison always comes from a single 10-Q.
+> The full-year piece still comes from the 10-K, so some tag mixing remains, which I disclose."
 
 ## 5. Restatements: "as first reported" vs "latest"
 
@@ -80,11 +81,11 @@ don't drive anything.
 anyway?" A signal is only useful if busts are **more** common when it fires than when
 it doesn't.
 
-**Here.** 34% of the 93 firms went bankrupt. Firms *without* the signal went bankrupt
-53% of the time (the base rate); firms *with* it, 30%. The signal did worse than the
+**Here.** 33% of the 93 firms (31) went bankrupt. Firms *without* the signal went bankrupt
+47% of the time (the base rate); firms *with* it, 30%. The signal did worse than the
 base rate.
 
-> "A 30% hit rate sounds informative until you notice the no-signal group was at 53%."
+> "A 30% hit rate sounds informative until you notice the no-signal group was at 47%."
 
 ## 7. The confusion table: TP, FP, FN, TN
 
@@ -95,7 +96,7 @@ base rate.
 
 - **False positive** = a false alarm. Here: 52 firms showed the signal and survived
   through 2019.
-- **False negative** = a miss. Here: 10 firms went bankrupt without the signal first.
+- **False negative** = a miss. Here: 9 firms went bankrupt without the signal first.
 - A rule can look great if you only show the TPs ("22 bankrupt firms all flashed the
   signal!"). That's why the table must be shown whole.
 
@@ -105,12 +106,21 @@ base rate.
 would a difference this big be? Fisher's exact test computes that exactly for a 2×2
 table, which is right when counts are small.
 
-**Here.** p = 0.10 for the headline. Not small enough to rule out chance, and the
+**Here.** p = 0.18 for the headline. Not small enough to rule out chance, and the
 difference goes the *wrong* direction anyway. With only 19 firms in the "no signal" row,
 moving one or two firms shifts the base rate by 5–10 points.
 
 > "p-values tell you about noise, not importance. With a sample this small, I'd treat
 > any single number as a rough indication."
+
+**A deeper caveat: independence.** Fisher's test assumes each firm is an independent coin
+flip. Here one economy-wide survey sets every firm's lender condition, and one oil crash
+drives most bankruptcies. The firms move together, so the real amount of information is
+much smaller than "93 firms" suggests. Every p-value in this project overstates the
+evidence, including the ones that go the wrong way.
+
+> "The p-value assumes independent firms, but they all faced the same oil price and the
+> same banks, so I treat the p-values as optimistic."
 
 ## 9. Survivorship bias
 
@@ -121,6 +131,11 @@ that died, which are exactly the cases a bust rule is about.
 lists every company that reported assets for that date, **including** ones that later
 went bankrupt or were acquired. Firms were selected by a mechanical rule (SIC code 1311,
 assets ≥ $500M), never by name.
+
+**Residual bias, disclosed:** the snapshot also includes firms that went public in 2014, whose
+2013 balances only appear because they later filed with the SEC. And SIC codes are noisy:
+Energy XXI and Atlas Resource Partners were producers that went bankrupt in 2016 but are
+filed under drilling and field-service codes, so the rule left them out.
 
 ## 10. Selection on the outcome / hindsight
 
@@ -148,7 +163,7 @@ then measured: no bankruptcies, and the signal fired for 2 of 15 firms.
 **Idea.** A warning light that's always on carries no information. Rules that describe a
 whole episode well can still be useless at telling *which* firm will fail.
 
-**Here.** 91 of 93 producers outspent cash flow in 2013–15, which was the shale business
+**Here.** 91 of 93 producers outspent cash flow at some point in 2013Q1–2015Q2, which was the shale business
 model. The bank survey is one economy-wide number that turned positive in 2015Q3, and 62
 of 74 signals first fired in that one quarter.
 
@@ -169,8 +184,8 @@ oil crash caused everything."
 
 **Idea.** Any fixed follow-up window cuts stories off mid-way.
 
-**Here.** The window ended in 2019, as pre-registered. Six "survivors" filed for
-bankruptcy in 2020 (COVID). They stay survivors in the test because the window was fixed
+**Here.** The window ended in 2019, as pre-registered. Seven firms with no bankruptcy by 2019 filed
+in 2020 (COVID); six of them are false alarms in the test. They stay survivors in the test because the window was fixed
 in advance, but they are reported (`data/clean/stage2_post_window_bankruptcies_2020_2021.csv`).
 Firms acquired before mid-2015 couldn't show a signal at all. That's why most of the
 "no signal, no bust" group are early takeovers.
@@ -201,3 +216,20 @@ was scrubbed from the git history.
 The point was to test the rule, not to confirm it. A clean "no" with a clear reason (the
 conditions were near-universal) is more useful than a cherry-picked "yes." It also points
 to the next test: a firm-level lending measure, and the debt firms had already taken on.
+
+## 18. Peer review, and why "post-hoc" is a label you must keep
+
+After the first results, an independent reviewer recomputed every number and read every
+bankruptcy filing. It caught a real error: SEC's index said Black Elk filed a bankruptcy
+8-K, but the document was an officer's resignation. The code had trusted the metadata.
+
+**Two lessons:**
+1. **Check the source, not just the index.** Metadata about a filing is not the filing.
+2. **Checks added after seeing results are "post-hoc," and they stay labeled that way.**
+   For example: was each signal public before the bankruptcy, or what happens if everyone
+   is scored on the same window? They are useful for stress-testing, but they never
+   replace the pre-registered headline, because you could keep adding checks until one
+   says what you want.
+
+> "A reviewer found a mislabeled bankruptcy. I fixed it, reported the result before and
+> after, and the conclusion didn't change. That's the point of making the work checkable."

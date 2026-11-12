@@ -1,0 +1,6 @@
+check,description,n,TP,FN,FP,TN,untestable,bust_rate_if_signal,base_rate_no_signal,difference,fisher_p,strict_reading,probabilistic_reading
+symmetric_window_12q,busts credited only for signals in 2013Q1-2016Q4 AND in the 12 quarters before the bust,15,0,0,2,13,0,0.0,0.0,0.0,1.0,falsified,not supported
+symmetric_window_any,"busts credited for any signal in 2013Q1 to min(2016Q4, quarter before bust)",15,0,0,2,13,0,0.0,0.0,0.0,1.0,falsified,not supported
+signal_public_before_bust,signal must have been PUBLIC before the bankruptcy date (survey first-release date from ALFRED and filing dates of the 10-Q/10-K used),15,0,0,2,13,0,0.0,0.0,0.0,1.0,falsified,not supported
+exclude_could_never_signal,drop firms with no measurable shortfall in any scoring-window quarter when lenders were stepping back,15,0,0,2,13,0,0.0,0.0,0.0,1.0,falsified,not supported
+epl_counted_as_bust,count EPL Oil & Gas as bankrupt in 2016Q2 (evidence outside its own 8-Ks),15,0,0,2,13,0,0.0,0.0,0.0,1.0,falsified,not supported

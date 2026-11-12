@@ -34,12 +34,18 @@ def test_signal_more_than_12_quarters_before_bust_does_not_count():
 
 
 def test_false_negative_reasons():
+    # Bust 2016Q2: its 12-quarter window 2013Q2-2016Q1 includes lender quarters 2015Q3-2016Q1.
     covered = label_firm(series(), LENDERS, pd.Period("2016Q2"))
-    assert covered == dict(label="FN", reason="no shortfall: cash flow covered spending",
-                           first_signal=None)
-    sf = series(true_quarters=["2014Q1"])  # shortfall while lenders were easing
-    assert label_firm(sf, LENDERS, pd.Period("2015Q1"))["reason"] == \
-        "shortfall but lenders not stepping back"
+    assert covered["label"] == "FN"
+    assert covered["reason"] == "no shortfall in the 12 quarters before the bust"
+    sf = series(true_quarters=["2014Q1"])  # shortfall only while lenders were easing
+    assert label_firm(sf, LENDERS, pd.Period("2016Q2"))["reason"] ==         "shortfall, but never while lenders were stepping back"
+    # Data stops before lenders tightened: say so instead of blaming lenders.
+    gone = series(true_quarters=["2014Q1"],
+                  na_quarters=[str(q) for q in pd.period_range("2015Q1", "2019Q4", freq="Q")])
+    assert label_firm(gone, LENDERS, pd.Period("2016Q2"))["reason"] ==         "no data in the quarters when lenders were stepping back"
+    # Bust before lenders ever tightened.
+    assert label_firm(sf, LENDERS, pd.Period("2015Q1"))["reason"] ==         "lenders never stepped back in the 12 quarters before the bust"
 
 
 def test_untestable_when_nothing_measurable_before_bust():
@@ -94,3 +100,11 @@ def test_bankruptcy_events_with_no_8ks_at_all():
                           reportDate=[""], form=["6-K"], items=[""]))
     ev = bankruptcy_events(f)
     assert ev.empty and "event_date" in ev.columns
+
+
+def test_verified_mistagged_8k_is_not_a_bankruptcy():
+    # EDGAR metadata says 1.03, but the document is an officer resignation.
+    f = pd.DataFrame(dict(cik=[1518909], accessionNumber=["0001518909-14-000034"],
+                          filingDate=["2014-09-19"], reportDate=["2014-09-15"], form=["8-K"],
+                          items=["1.03,5.02,9.01"]))
+    assert bankruptcy_events(f).empty

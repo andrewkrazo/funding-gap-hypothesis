@@ -90,89 +90,89 @@ cik,entity_name,bust_quarter,bust_type,exited,label,reason,first_signal,version,
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
 1316360,IHS INC.,,,True,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,first,kept
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,first,kept
 891103,"MATCH GROUP, INC.",,,False,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,B,B2,lender_step_back,first,kept
 1271024,LINKEDIN CORP,,,True,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
 1324245,"SOLERA HOLDINGS, INC",,,True,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
-1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,first,kept
+1087423,RED HAT INC,2015Q1,capex cut,True,FN,lenders never stepped back in the 12 quarters before the bust,,B,B2,lender_step_back,first,kept
 906192,"SRA INTERNATIONAL, INC.",,,True,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
 1107694,"RACKSPACE HOSTING, INC.",,,True,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,first,kept
-1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,shortfall but lenders not stepping back,,B,B2,lender_step_back,first,kept
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,first,kept
+1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,"shortfall, but never while lenders were stepping back",,B,B2,lender_step_back,first,kept
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,B,B2,lender_step_back,first,kept
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,B,B2,lender_step_back,first,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,B,B2,lender_step_back,first,dropped
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,first,dropped
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,first,dropped
 891103,"MATCH GROUP, INC.",,,False,TN,"no signal, no bust",,B,B2,lender_step_back,first,dropped
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,B,B2,lender_step_back,first,dropped
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,first,dropped
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,first,dropped
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,B,B2,lender_step_back,first,dropped
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,B,B2,lender_step_back,first,dropped
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,B,B2,lender_step_back,latest,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,B,B2,lender_step_back,latest,kept
 1316360,IHS INC.,,,True,TN,"no signal, no bust",,B,B2,lender_step_back,latest,kept
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,latest,kept
-891103,"MATCH GROUP, INC.",2019Q1,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,latest,kept
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,latest,kept
+891103,"MATCH GROUP, INC.",2019Q1,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,latest,kept
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,B,B2,lender_step_back,latest,kept
 1271024,LINKEDIN CORP,,,True,TN,"no signal, no bust",,B,B2,lender_step_back,latest,kept
 1324245,"SOLERA HOLDINGS, INC",,,True,TN,"no signal, no bust",,B,B2,lender_step_back,latest,kept
-1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,latest,kept
+1087423,RED HAT INC,2015Q1,capex cut,True,FN,lenders never stepped back in the 12 quarters before the bust,,B,B2,lender_step_back,latest,kept
 906192,"SRA INTERNATIONAL, INC.",,,True,TN,"no signal, no bust",,B,B2,lender_step_back,latest,kept
 1107694,"RACKSPACE HOSTING, INC.",,,True,TN,"no signal, no bust",,B,B2,lender_step_back,latest,kept
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,latest,kept
-1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,shortfall but lenders not stepping back,,B,B2,lender_step_back,latest,kept
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,latest,kept
+1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,"shortfall, but never while lenders were stepping back",,B,B2,lender_step_back,latest,kept
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,B,B2,lender_step_back,latest,kept
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,B,B2,lender_step_back,latest,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,B,B2,lender_step_back,latest,dropped
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,latest,dropped
-891103,"MATCH GROUP, INC.",2019Q1,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,latest,dropped
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,latest,dropped
+891103,"MATCH GROUP, INC.",2019Q1,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,latest,dropped
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,B,B2,lender_step_back,latest,dropped
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,lender_step_back,latest,dropped
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,lender_step_back,latest,dropped
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,B,B2,lender_step_back,latest,dropped
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,B,B2,lender_step_back,latest,dropped
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
 1316360,IHS INC.,,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,first,kept
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,first,kept
 891103,"MATCH GROUP, INC.",,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,B,B2,baa10y_flag,first,kept
 1271024,LINKEDIN CORP,,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
 1324245,"SOLERA HOLDINGS, INC",,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
-1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,first,kept
+1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,first,kept
 906192,"SRA INTERNATIONAL, INC.",,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
 1107694,"RACKSPACE HOSTING, INC.",,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,first,kept
-1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,shortfall but lenders not stepping back,,B,B2,baa10y_flag,first,kept
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,first,kept
+1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,"shortfall, but never while lenders were stepping back",,B,B2,baa10y_flag,first,kept
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,first,kept
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,B,B2,baa10y_flag,first,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,first,dropped
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,first,dropped
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,first,dropped
 891103,"MATCH GROUP, INC.",,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,first,dropped
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,B,B2,baa10y_flag,first,dropped
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,first,dropped
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,first,dropped
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,first,dropped
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,B,B2,baa10y_flag,first,dropped
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,kept
 1316360,IHS INC.,,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,kept
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,latest,kept
-891103,"MATCH GROUP, INC.",2019Q1,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,latest,kept
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,latest,kept
+891103,"MATCH GROUP, INC.",2019Q1,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,latest,kept
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,B,B2,baa10y_flag,latest,kept
 1271024,LINKEDIN CORP,,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,kept
 1324245,"SOLERA HOLDINGS, INC",,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,kept
-1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,latest,kept
+1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,latest,kept
 906192,"SRA INTERNATIONAL, INC.",,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,kept
 1107694,"RACKSPACE HOSTING, INC.",,,True,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,kept
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,latest,kept
-1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,shortfall but lenders not stepping back,,B,B2,baa10y_flag,latest,kept
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,latest,kept
+1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,"shortfall, but never while lenders were stepping back",,B,B2,baa10y_flag,latest,kept
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,kept
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,B,B2,baa10y_flag,latest,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,dropped
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,latest,dropped
-891103,"MATCH GROUP, INC.",2019Q1,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,latest,dropped
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,latest,dropped
+891103,"MATCH GROUP, INC.",2019Q1,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,latest,dropped
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,B,B2,baa10y_flag,latest,dropped
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,B,B2,baa10y_flag,latest,dropped
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,B,B2,baa10y_flag,latest,dropped
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,B,B2,baa10y_flag,latest,dropped
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,B,B2,baa10y_flag,latest,dropped
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,A,B1,lender_step_back,first,kept
@@ -266,88 +266,88 @@ cik,entity_name,bust_quarter,bust_type,exited,label,reason,first_signal,version,
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
 1316360,IHS INC.,,,True,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,first,kept
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,first,kept
 891103,"MATCH GROUP, INC.",,,False,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,A,B2,lender_step_back,first,kept
 1271024,LINKEDIN CORP,,,True,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
 1324245,"SOLERA HOLDINGS, INC",,,True,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
-1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,first,kept
+1087423,RED HAT INC,2015Q1,capex cut,True,FN,lenders never stepped back in the 12 quarters before the bust,,A,B2,lender_step_back,first,kept
 906192,"SRA INTERNATIONAL, INC.",,,True,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
 1107694,"RACKSPACE HOSTING, INC.",,,True,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,first,kept
-1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,shortfall but lenders not stepping back,,A,B2,lender_step_back,first,kept
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,first,kept
+1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,"shortfall, but never while lenders were stepping back",,A,B2,lender_step_back,first,kept
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,A,B2,lender_step_back,first,kept
-1056386,Internap Corp,2013Q3,capex cut,False,FN,shortfall but lenders not stepping back,,A,B2,lender_step_back,first,kept
+1056386,Internap Corp,2013Q3,capex cut,False,FN,lenders never stepped back in the 12 quarters before the bust,,A,B2,lender_step_back,first,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,A,B2,lender_step_back,first,dropped
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,first,dropped
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,first,dropped
 891103,"MATCH GROUP, INC.",,,False,TN,"no signal, no bust",,A,B2,lender_step_back,first,dropped
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,A,B2,lender_step_back,first,dropped
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,first,dropped
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,first,dropped
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,A,B2,lender_step_back,first,dropped
-1056386,Internap Corp,2013Q3,capex cut,False,FN,shortfall but lenders not stepping back,,A,B2,lender_step_back,first,dropped
+1056386,Internap Corp,2013Q3,capex cut,False,FN,lenders never stepped back in the 12 quarters before the bust,,A,B2,lender_step_back,first,dropped
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,A,B2,lender_step_back,latest,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,A,B2,lender_step_back,latest,kept
 1316360,IHS INC.,,,True,TN,"no signal, no bust",,A,B2,lender_step_back,latest,kept
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,latest,kept
-891103,"MATCH GROUP, INC.",2018Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,latest,kept
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,latest,kept
+891103,"MATCH GROUP, INC.",2018Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,latest,kept
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,A,B2,lender_step_back,latest,kept
 1271024,LINKEDIN CORP,,,True,TN,"no signal, no bust",,A,B2,lender_step_back,latest,kept
 1324245,"SOLERA HOLDINGS, INC",,,True,TN,"no signal, no bust",,A,B2,lender_step_back,latest,kept
-1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,latest,kept
+1087423,RED HAT INC,2015Q1,capex cut,True,FN,lenders never stepped back in the 12 quarters before the bust,,A,B2,lender_step_back,latest,kept
 906192,"SRA INTERNATIONAL, INC.",,,True,TN,"no signal, no bust",,A,B2,lender_step_back,latest,kept
 1107694,"RACKSPACE HOSTING, INC.",,,True,TN,"no signal, no bust",,A,B2,lender_step_back,latest,kept
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,latest,kept
-1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,shortfall but lenders not stepping back,,A,B2,lender_step_back,latest,kept
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,latest,kept
+1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,"shortfall, but never while lenders were stepping back",,A,B2,lender_step_back,latest,kept
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,A,B2,lender_step_back,latest,kept
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,A,B2,lender_step_back,latest,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,A,B2,lender_step_back,latest,dropped
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,latest,dropped
-891103,"MATCH GROUP, INC.",2018Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,latest,dropped
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,latest,dropped
+891103,"MATCH GROUP, INC.",2018Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,latest,dropped
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,A,B2,lender_step_back,latest,dropped
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,lender_step_back,latest,dropped
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,lender_step_back,latest,dropped
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,A,B2,lender_step_back,latest,dropped
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,A,B2,lender_step_back,latest,dropped
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
 1316360,IHS INC.,,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,first,kept
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,first,kept
 891103,"MATCH GROUP, INC.",,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,A,B2,baa10y_flag,first,kept
 1271024,LINKEDIN CORP,,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
 1324245,"SOLERA HOLDINGS, INC",,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
-1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,first,kept
+1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,first,kept
 906192,"SRA INTERNATIONAL, INC.",,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
 1107694,"RACKSPACE HOSTING, INC.",,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,first,kept
-1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,shortfall but lenders not stepping back,,A,B2,baa10y_flag,first,kept
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,first,kept
+1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,"shortfall, but never while lenders were stepping back",,A,B2,baa10y_flag,first,kept
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,first,kept
 1056386,Internap Corp,2013Q3,capex cut,False,TP,signal before bust,2012Q1,A,B2,baa10y_flag,first,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,first,dropped
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,first,dropped
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,first,dropped
 891103,"MATCH GROUP, INC.",,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,first,dropped
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,A,B2,baa10y_flag,first,dropped
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,first,dropped
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,first,dropped
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,first,dropped
 1056386,Internap Corp,2013Q3,capex cut,False,TP,signal before bust,2012Q1,A,B2,baa10y_flag,first,dropped
 1288776,Google Inc.,,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,kept
 1316360,IHS INC.,,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,kept
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,latest,kept
-891103,"MATCH GROUP, INC.",2018Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,latest,kept
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,latest,kept
+891103,"MATCH GROUP, INC.",2018Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,latest,kept
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,A,B2,baa10y_flag,latest,kept
 1271024,LINKEDIN CORP,,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,kept
 1324245,"SOLERA HOLDINGS, INC",,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,kept
-1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,latest,kept
+1087423,RED HAT INC,2015Q1,capex cut,True,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,latest,kept
 906192,"SRA INTERNATIONAL, INC.",,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,kept
 1107694,"RACKSPACE HOSTING, INC.",,,True,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,kept
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,latest,kept
-1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,shortfall but lenders not stepping back,,A,B2,baa10y_flag,latest,kept
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,latest,kept
+1102541,EARTHLINK HOLDINGS CORP.,2015Q4,capex cut,True,FN,"shortfall, but never while lenders were stepping back",,A,B2,baa10y_flag,latest,kept
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,kept
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,A,B2,baa10y_flag,latest,kept
 1326801,"Meta Platforms, Inc.",,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,dropped
-1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,latest,dropped
-891103,"MATCH GROUP, INC.",2018Q4,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,latest,dropped
+1597033,Sabre Corporation,2019Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,latest,dropped
+891103,"MATCH GROUP, INC.",2018Q4,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,latest,dropped
 1418091,"Twitter, Inc.",2017Q3,capex cut,False,TP,signal before bust,2015Q3,A,B2,baa10y_flag,latest,dropped
-1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall: cash flow covered spending,,A,B2,baa10y_flag,latest,dropped
+1526520,"TRIPADVISOR, INC.",2018Q3,capex cut,False,FN,no shortfall in the 12 quarters before the bust,,A,B2,baa10y_flag,latest,dropped
 1013237,FactSet Research Systems Inc.,,,False,TN,"no signal, no bust",,A,B2,baa10y_flag,latest,dropped
 1056386,Internap Corp,2017Q1,capex cut,False,TP,signal before bust,2015Q3,A,B2,baa10y_flag,latest,dropped

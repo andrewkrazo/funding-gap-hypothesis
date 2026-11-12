@@ -19,6 +19,15 @@ from .sources import fetch_json
 
 FILING_COLS = ["accessionNumber", "filingDate", "reportDate", "form", "items"]
 
+# 8-Ks whose EDGAR index metadata lists Item 1.03 but whose document does not
+# report a bankruptcy. Each was verified by reading the filing (peer review,
+# CHANGELOG v1.3). Results are reported both with and without this correction.
+MISTAGGED_1_03 = {
+    "0001518909-14-000034": "Black Elk Energy Offshore Operations 8-K of 2014-09-19 reports only "
+                            "Items 5.02 and 9.01 (an officer's resignation); no bankruptcy.",
+}
+APPLY_MISTAG_CORRECTION = True
+
 
 def all_filings(cik) -> pd.DataFrame:
     """Every filing for a company. The submissions API puts the most recent
@@ -40,6 +49,8 @@ def bankruptcy_events(filings: pd.DataFrame, start="2013-01-01", end="2019-12-31
     f = filings[filings["form"].isin(["8-K", "8-K/A"])].copy()
     has_103 = [("1.03" in [x.strip() for x in str(items).split(",")]) for items in f["items"].fillna("")]
     f = f[pd.Series(has_103, index=f.index, dtype=bool)]  # stays a table even when empty
+    if APPLY_MISTAG_CORRECTION:
+        f = f[~f["accessionNumber"].isin(MISTAGGED_1_03)]
     # The event date is the report date if given, else the filing date.
     f["event_date"] = f["reportDate"].where(f["reportDate"].fillna("") != "", f["filingDate"])
     f = f[(f["event_date"] >= start) & (f["event_date"] <= end)].sort_values("event_date")

@@ -4,6 +4,33 @@ Every change to a definition, threshold or universe in `RULE.md` after its first
 is logged here with the date, the reason, and whether any data had been seen. Results
 are reported under both the old and new versions.
 
+## v1.3 — 2026-11-12 (peer review; made AFTER results were seen, so everything is reported both ways)
+- **Data correction:** Black Elk's 8-K (accession 0001518909-14-000034) is listed in
+  EDGAR's index metadata as Item 1.03, but the document reports only Items 5.02/9.01 (an
+  officer's resignation). It is no longer counted as a bankruptcy (`MISTAGGED_1_03` in
+  `fundgap/busts.py`). This applies the pre-registered definition (an 8-K *reporting*
+  Item 1.03) more faithfully. Headline before → after: 30% vs 53% (p = 0.10) → 30% vs 47%
+  (p = 0.18). Reading unchanged. The other 31 bankruptcy 8-Ks were read and confirmed.
+- **Clearer miss reasons:** the code now says whether lenders never tightened in the
+  window, the firm had no data while they did, a shortfall never coincided with
+  tightening, or there was no shortfall. Labels unchanged.
+- **Post-hoc checks added** (`stage2b_test.py`, `*_posthoc_checks.csv`), never headlined:
+  signal public before the bankruptcy (ALFRED first-release dates + filing dates); two
+  symmetric-window versions; dropping firms that could never have signaled; counting EPL
+  Oil & Gas as bankrupt. All read "not supported."
+- **Guard:** stage 2B stops if the bank survey has any gap in 2012–2019, instead of reading
+  a gap as "no step-back."
+- **Bug fix (code only):** the bankruptcy reader failed for firms with no 8-Ks at all
+  (foreign filers).
+- **Disclosures added to RESULTS.md:** non-independence of firms (p-values overstate the
+  evidence); bankruptcies outside the 8-K measure (EPL, Samson, Black Elk); producers
+  outside SIC 1311 (Energy XXI, Atlas); exclusions that line up with outcomes;
+  2014-IPO selection; Google dominating the comparison sector; remaining 10-K/10-Q tag
+  mixing in the TTM method.
+- An earlier "signal at least 2 quarters before the bust" check was superseded by the
+  publication-date check. It was over-strict: two signals were public before their
+  firms' bankruptcies but fell less than 2 quarters before them.
+
 ## v1.2 — 2026-11-12 (addendum A1; logged BEFORE the comparison sector's data is pulled)
 - Added RULE.md section 6: the "booms that ended well" comparison group, chosen
   mechanically as the largest non-energy capex boom of 2011→2014, so it isn't picked on
