@@ -4,6 +4,13 @@ Every change to a definition, threshold or universe in `RULE.md` after its first
 is logged here with the date, the reason, and whether any data had been seen. Results
 are reported under both the old and new versions.
 
+## v1.2 — 2026-11-12 (addendum A1; logged BEFORE the comparison sector's data is pulled)
+- Added RULE.md section 6: the "booms that ended well" comparison group, chosen
+  mechanically as the largest non-energy capex boom of 2011→2014, so it isn't picked on
+  its outcome. No existing definitions, thresholds or results changed.
+- Prior knowledge, disclosed: I know the general history of several sectors. The rule
+  ranks sectors by capex growth alone, and I don't know in advance which one it will pick.
+
 ## v1.1 — 2026-11-12 (Stage 2 data step; logged BEFORE any bust/bankruptcy data was downloaded)
 
 Stage 2 company cash-flow data revealed three problems the pre-registration did not

@@ -193,6 +193,7 @@ gives three years of follow-up after the last possible signal.
 Deferred to Stage 2. Its selection rule will be added to this file as a dated addendum
 and committed **before** its data is pulled. Firms in the main universe that did not
 bust already serve as within-sample examples of booms that didn't end in a bust.
+*(Addendum: see section 6.)*
 
 ---
 
@@ -250,3 +251,44 @@ Neither reading turns a pilot this size into proof.
 - **Missing data stops the work.** If a source fails or a needed number is missing in a
   way the rules above don't cover, the work stops and the author decides. Nothing is
   invented or estimated.
+
+---
+
+## 6. Addendum A1 (2026-11-12): comparison boom, pre-registered before its data is pulled
+
+**Why the rule picks the comparison by size, not by outcome.** Choosing a sector
+*because* its boom "ended well" would be selecting on the outcome, the hindsight
+section 3 forbids. Instead, the comparison group is **the largest non-energy building
+boom of the same years**, picked by a capex-growth rule. Whether it ended well is then
+*measured* with the same bust definitions, not assumed. At the time of writing, I don't
+know which sector the rule will pick.
+
+**Selection rule (mechanical):**
+1. Candidate firms: every filer with XBRL `Assets` ≥ US$500M in the CY2013Q4I frame
+   (same frame and threshold as section 3).
+2. Each firm's capex for calendar 2011 and 2014 comes from the XBRL frames API
+   (`frames/us-gaap/<tag>/USD/CY2011.json` and `CY2014.json`):
+   `PaymentsToAcquirePropertyPlantAndEquipment`, or `PaymentsToAcquireProductiveAssets`
+   if the first is absent for that firm and year. A firm needs a value in both years.
+3. SIC = the firm's current SIC code from the EDGAR submissions API.
+4. Eligible sectors: 4-digit SIC codes with at least **15** such firms, **excluding**
+   energy-linked codes so the comparison isn't hit by the same oil shock: SIC 1000–1499
+   (mining, incl. oil and gas), 2911 (refining), 3533 (oil-field machinery), 4610–4619
+   (pipelines), 4922–4924 (natural gas transmission and distribution), 5171–5172
+   (petroleum wholesale), 6792 (oil royalty traders).
+5. Boom size = (sum of 2014 capex) ÷ (sum of 2011 capex) across that sector's eligible
+   firms. **The sector with the largest ratio is the comparison boom.**
+6. The comparison universe is then built exactly like section 3: EDGAR's company list
+   for that SIC × `Assets` ≥ $500M in CY2013Q4I.
+
+**Analysis:** identical to sections 2 and 4: same definitions, thresholds and windows,
+both versions (A and B, CHANGELOG v1.1), and all variants. Reported:
+- the comparison group's own confusion table, bust rate and signal rate;
+- the share of **non-bankrupt** firms that showed the signal (the false-alarm rate), side
+  by side with the oil and gas group;
+- a pooled table (both groups together) as a secondary result.
+
+**How it's read (fixed now):** if the signal fires for most firms in a boom with few or
+no bankruptcies, that is further evidence the signal is not specific to busts. If the
+signal rarely fires there, the comparison does not count against the rule. Neither
+outcome rescues or condemns the rule alone: it is one more boom.
