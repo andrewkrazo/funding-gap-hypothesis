@@ -41,7 +41,7 @@ def capex_frame(year: int) -> pd.Series:
         url = f"https://data.sec.gov/api/xbrl/frames/us-gaap/{tag}/USD/CY{year}.json"
         path = DATA_RAW / "edgar" / "frames" / f"{tag}_USD_CY{year}.json.gz"
         try:
-            data = fetch_json(url, path, headers=_headers())
+            data = fetch_json(url, path, headers=_headers)
         except RuntimeError:
             continue
         for r in data["data"]:

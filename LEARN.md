@@ -234,7 +234,7 @@ bankruptcy filing. It caught a real error: SEC's index said Black Elk filed a ba
 > "A reviewer found a mislabeled bankruptcy. I fixed it, reported the result before and
 > after, and the conclusion didn't change. That's the point of making the work checkable."
 
-## 19. When your measuring tool, not your idea, is the problem
+## 19. When your measuring tool is part of the problem
 
 The main test used one national survey for "lenders step back," so it was the same for
 every firm. The follow-up read each firm's own bank decisions (borrowing-base cuts) from
@@ -244,13 +244,19 @@ its filings. Same firms, same years, opposite answer: "not supported" became "su
 **Two traps showed up along the way:**
 1. **Text matching finds words, not meanings.** "The borrowing base was reduced" was often
    an *automatic* reduction written into the loan contract, triggered when the firm sold
-   bonds. That's the opposite of banks pulling back. Only a hand check caught it, which is
+   bonds. That isn't a bank decision at all. Only a hand check caught it, which is
    why the plan required one before running the test.
 2. **Reverse causation.** Banks cut credit for firms they already think are in trouble.
    So "a cut predicts bankruptcy" partly means "banks can spot trouble," not "cuts cause
    bankruptcy." That's why the plan compared the full rule against the bank cut alone.
    The cut alone did just as well, so the overspending half of the rule added nothing.
 
-> "Measured the right way, the lender half of the rule carried all the predictive power,
-> and the cash-flow half added nothing. I'd want to see it repeat on a different crash
-> before believing it."
+3. **Check what drives your result, not just a random sample.** A later audit read every
+   cut behind a warning signal, for bankrupt firms and survivors alike. About a third
+   weren't bank decisions, mostly asset sales, which are themselves signs of distress.
+   Counting only verified cuts, the gap shrank from 49% vs 14% to 45% vs 25%.
+
+> "Measured firm by firm, the lender half of the rule carried the predictive power and
+> the cash-flow half added nothing. When I hand-checked every cut behind a signal, the
+> effect shrank to 45% vs 25%, so I'd want to see it repeat on a different crash before
+> believing it."

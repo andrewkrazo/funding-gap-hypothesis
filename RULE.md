@@ -25,8 +25,9 @@ plus lender pullback** is **my own extension, not Dalio's claim.**
 **Why test it this way.** In "Principled Thinking and AI Need to Go Together"
 (Ray Dalio, *Principled Perspectives* Substack, June 10, 2026,
 <https://raydalio.substack.com/p/principled-thinking-and-ai-need-to>), Dalio describes
-writing a principle down from cause-and-effect logic, back-testing it against history,
-and not deriving principles by data mining. This project follows that order: state the
+writing a principle down from cause-and-effect logic and back-testing it against
+history, and says principles are "not best derived" by data mining (wording matched to
+the essay in the v1.6 audit). This project follows that order: state the
 logic, fix the definitions, then test.
 
 **The causal story, in plain words.** A firm that spends more on building than its

@@ -4,6 +4,31 @@ Every change to a definition, threshold or universe in `RULE.md` after its first
 is logged here with the date, the reason, and whether any data had been seen. Results
 are reported under both the old and new versions.
 
+## v1.6 — 2026-11-12 (full audit: sources, quotes, numbers; made AFTER all results)
+- **Sources checked against the originals:** Dalio's essay (title, date, wording), the
+  Forbes article (quote word for word), the Fed survey (question wording; FRED's value
+  dated 2026-04-01 equals the Fed's Table 1 for the April 2026 survey), the WTI source,
+  company name histories. No fabricated or misattributed source was found.
+- **Wording fixes:**
+  - RULE.md section 1 now uses Dalio's own "not best derived" (data mining) instead of a
+    stronger paraphrase.
+  - EPL is described as a debtor itself, per its 10-Q.
+  - Google's reorganization is cited to its 8-K.
+  - The borrowing-base description is cited to a filing.
+  - Overstated sentences in RESULTS section 9 and LEARN section 19 are corrected.
+- **Follow-up audit (symmetric, post-hoc):** every one of the 147 cuts that create a
+  signal was judged by hand (`data/clean/bbase_signal_cut_review.csv`): 96 bank decisions,
+  35 not, 16 unclear. Counting only verified cuts: P 45% vs 25% (p = 0.047); S1 45% vs 20%
+  (p = 0.016). The pre-registered numbers stay in the record, and the audited ones are now
+  shown first in the summaries.
+- **Code:** SEC request headers are built only when a download is needed, so reading
+  cached data no longer requires `SEC_USER_AGENT`. Added stage 3C (the signal-cut review)
+  to `run_all.py`.
+- **Disclosed:**
+  - extra verbs ("declined", "cut") in the extraction code;
+  - v2 rules and their validation committed together;
+  - v2 deduplication merging one genuinely different cut (no label changed).
+
 ## v1.5.1 — 2026-11-12 (version 2 validation; logged BEFORE any test result)
 - Fresh sample of 25 v2 cuts (seed 43), judged by hand in
   `data/clean/bbase_validation_precision_v2_reviewed.csv`:

@@ -37,7 +37,7 @@ def all_filings(cik) -> pd.DataFrame:
     for page in sub["filings"].get("files", []):
         url = f"{BASE}/submissions/{page['name']}"
         path = DATA_RAW / "edgar" / "submissions" / page["name"].replace(".json", ".json.gz")
-        older = fetch_json(url, path, headers=_headers())
+        older = fetch_json(url, path, headers=_headers)
         frames.append(pd.DataFrame({c: older.get(c, []) for c in FILING_COLS}))
     df = pd.concat(frames, ignore_index=True)
     df["cik"] = int(cik)

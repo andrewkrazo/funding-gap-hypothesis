@@ -30,6 +30,8 @@ STEPS = [
     # the sentences are cached in data/raw/edgar/borrowing_base_sentences.jsonl.gz.
     ("Addendum A2: borrowing-base cuts", [sys.executable, "stages/stage3a_borrowing_base.py"]),
     ("Addendum A2: firm-level lender test", [sys.executable, "stages/stage3b_test.py"]),
+    # Audit (CHANGELOG v1.6): recompute using the hand-judged review sheet in data/clean.
+    ("Audit: only hand-verified bank cuts", [sys.executable, "stages/stage3c_signal_cut_review.py", "results"]),
 ]
 
 for title, cmd in STEPS:

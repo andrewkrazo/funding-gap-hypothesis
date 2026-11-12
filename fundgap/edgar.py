@@ -27,7 +27,7 @@ def cik10(cik: int | str) -> str:
 def _companyfacts_cached(cik10_str: str) -> dict:
     url = f"{BASE}/api/xbrl/companyfacts/CIK{cik10_str}.json"
     path = DATA_RAW / "edgar" / "companyfacts" / f"CIK{cik10_str}.json.gz"
-    return fetch_json(url, path, headers=_headers())
+    return fetch_json(url, path, headers=_headers)
 
 
 def companyfacts(cik) -> dict:
@@ -38,7 +38,7 @@ def companyfacts(cik) -> dict:
 def submissions(cik) -> dict:
     url = f"{BASE}/submissions/CIK{cik10(cik)}.json"
     path = DATA_RAW / "edgar" / "submissions" / f"CIK{cik10(cik)}.json.gz"
-    return fetch_json(url, path, headers=_headers())
+    return fetch_json(url, path, headers=_headers)
 
 
 def filing_index_url(cik, accn: str) -> str:

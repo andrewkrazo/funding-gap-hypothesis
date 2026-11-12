@@ -22,14 +22,16 @@ from .config import ROOT, SOURCES_LOG
 _last_request = 0.0
 
 
-def fetch_json(url: str, local_path: Path, headers: dict | None = None,
+def fetch_json(url: str, local_path: Path, headers=None,
                min_interval: float = 0.15, redact: str | None = None) -> dict:
     """Return parsed JSON for `url`, downloading only if not cached already.
 
     The raw bytes are saved gzip-compressed at `local_path` (ending .json.gz).
     `redact` is a secret (like an API key) to strip from the URL in the log.
     The SEC asks for at most 10 requests per second; min_interval keeps us
-    well under that.
+    well under that. `headers` may be a function: it is only called when a
+    download is actually needed, so reading cached files never asks for
+    credentials (e.g. the SEC User-Agent).
     """
     global _last_request
     local_path = Path(local_path)
@@ -37,6 +39,8 @@ def fetch_json(url: str, local_path: Path, headers: dict | None = None,
         with gzip.open(local_path, "rb") as f:
             return json.loads(f.read())
 
+    if callable(headers):
+        headers = headers()
     wait = min_interval - (time.time() - _last_request)
     if wait > 0:
         time.sleep(wait)

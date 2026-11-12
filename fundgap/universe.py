@@ -43,7 +43,7 @@ def sic_ciks(sic: str = SIC) -> list[int]:
 def assets_frame(frame: str = FRAME) -> pd.DataFrame:
     url = f"https://data.sec.gov/api/xbrl/frames/us-gaap/Assets/USD/{frame}.json"
     path = DATA_RAW / "edgar" / "frames" / f"Assets_USD_{frame}.json.gz"
-    data = fetch_json(url, path, headers=_headers())
+    data = fetch_json(url, path, headers=_headers)
     df = pd.DataFrame(data["data"])
     df["frame_url"] = url
     return df

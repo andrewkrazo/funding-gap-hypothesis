@@ -28,9 +28,11 @@ tables, every variant and the limits are in **[RESULTS.md](RESULTS.md)**.
 
 **Follow-up (RESULTS.md section 9):** measuring "lenders step back" from each firm's *own*
 bank credit cuts, read from 48,873 filing sentences, changes the picture. Firms whose own
-lenders cut them went bankrupt far more often (49% vs 14% with the full rule; 47% vs 9% for
-the cut alone). But the overspending condition adds nothing beyond the bank's cut, the
-measure is noisy, and the pattern is predictive, not causal.
+lenders cut them went bankrupt more often: 49% vs 14% counting every detected cut, but
+**45% vs 25% (p = 0.047) counting only cuts verified by hand** as bank decisions. The
+overspending condition adds nothing beyond the bank's cut, the measure is noisy, and the
+pattern is predictive, not causal. RESULTS.md section 10 has the full audit of sources
+and numbers.
 
 ![Every firm, quarter by quarter](figures/stage2_firm_timeline.png)
 
@@ -56,7 +58,9 @@ measure is noisy, and the pattern is predictive, not causal.
 | SEC EDGAR `submissions` | 8-K item numbers (bankruptcy = Item 1.03) | `data.sec.gov/submissions/` |
 | FRED `DRTSCILM` | Bank lending standards survey | fred.stlouisfed.org/series/DRTSCILM |
 | FRED `BAA10Y` (side check) | Moody's Baa spread (**not redistributed**; flag only) | fred.stlouisfed.org/series/BAA10Y |
-| FRED `DCOILWTICO` (context only) | WTI oil price | fred.stlouisfed.org/series/DCOILWTICO |
+| FRED `DCOILWTICO` (context only) | WTI oil price (source: U.S. EIA) | fred.stlouisfed.org/series/DCOILWTICO |
+| Federal Reserve SLOOS pages | What the survey asks and which quarter it covers | federalreserve.gov/data/sloos.htm |
+| EDGAR full-text search (follow-up) | Filing sentences about borrowing-base cuts | efts.sec.gov/LATEST/search-index |
 
 Every download is logged in `data/raw/SOURCES.csv` with URL, time and SHA-256. Every
 company value carries its filing accession number and an EDGAR link. Nothing is
@@ -79,7 +83,8 @@ estimated or filled in: missing stays missing.
 ## Limitations (more in [RESULTS.md](RESULTS.md) §5)
 
 - One industry, one episode, 93 firms: a pilot, not proof.
-- The lender measure is economy-wide, so it can't vary across firms.
+- The main test's lender measure is economy-wide, so it can't vary across firms. The
+  follow-up fixes this with a firm-level measure, which is noisier.
 - The oil-price collapse caused both shortfalls and bankruptcies (confounding).
 - The bankruptcy measure misses firms that deregistered first and out-of-court defaults.
 - The window ends in 2019 as pre-registered; seven firms with no bankruptcy by then (six of them false alarms) filed in 2020.

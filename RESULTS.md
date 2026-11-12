@@ -14,9 +14,12 @@ signal fired for only 2 of its 15 firms (section 6).
 
 **Follow-up (section 9):** when "lenders step back" is measured from each firm's *own*
 lenders (cuts to its borrowing base, read from its filings) instead of a national survey,
-the signal becomes strong: 49% of signaled firms went bankrupt vs 14% of the rest.
-But the overspending half of the rule adds nothing beyond the bank's cut, and this
-is a predictive pattern, not proof of cause.
+the signal becomes informative. Counting every cut the computer detected, 49% of signaled
+firms went bankrupt vs 14% of the rest. But an audit that hand-checked every cut behind a
+signal found about a third were not bank decisions (asset sales, transactions, required
+paydowns). **Counting only verified bank cuts: 45% vs 25% (p = 0.047).** That's a real but
+much weaker, borderline pattern. The overspending half of the rule adds nothing beyond the
+bank's cut, and this is a predictive pattern, not proof of cause.
 
 The study was peer-reviewed after the first results (section 8). One bankruptcy label
 was a data error and was corrected, which moved the base rate from 53% to 47%. No check
@@ -69,8 +72,8 @@ which counts EP Energy's bankruptcy twice.
   At the firm level, "signal" mostly means "was still outspending cash flow in mid-2015."
 - **Many no-signal firms never had a chance to signal.** Of the 19 no-signal firms, 12 have
   no measurable data in any quarter when lenders were stepping back:
-  - 8 of the 10 true negatives stopped filing (most were acquired; EPL kept filing into
-    2016 but stopped reporting operating cash flow after 2014Q1);
+  - 8 of the 10 true negatives stopped filing (most were acquired; EPL kept filing into 2016,
+    but its XBRL data has no usable operating cash flow after 2014Q1);
   - 4 of the misses went bankrupt before or just as the survey turned positive, or
     stopped filing first.
 
@@ -151,9 +154,10 @@ wrong-way ones.
 **Known blind spots:**
 - **Bankruptcies the 8-K measure can't see.** B1 counts only Item 1.03 8-Ks filed under
   the firm's own SEC identity.
-  - **EPL Oil & Gas** reported debtor-reorganization fees in its own 2016 10-Q (accession
-    0001144204-16-102037) while its parent Energy XXI was in Chapter 11, but filed no
-    Item 1.03 8-K. It's labeled a survivor here; counting it as bankrupt is in section 8.
+  - **EPL Oil & Gas** was itself one of the Energy XXI group companies that filed
+    voluntary Chapter 11 petitions in April 2016, according to its own 10-Q (accession
+    0001144204-16-102037). It filed no Item 1.03 8-K of its own, so it's labeled a survivor
+    here; counting it as bankrupt is in section 8.
   - **Samson Resources** stopped filing in August 2015 and **Black Elk** in March 2015,
     with no Item 1.03 8-K. I believe both went bankrupt afterwards but have not verified
     this from a primary source.
@@ -225,6 +229,8 @@ is mostly Google), so it's an anecdote, not evidence.
 **Caveats.**
 - Only 15 firms, and 8 of them stopped filing before late 2019. For Google Inc. that's
   because it became Alphabet, a reorganization the pre-registered rule counts as an exit.
+  Google's 8-K of 2015-08-10 (accession 0001288776-15-000039) describes the "holding
+  company reorganization."
 - The B2 bust definition ("bankruptcy or a 50% capex cut") flags 6 of the 15 tech firms,
   and all 16 B2 variants for this group read "mixed" (2/2 vs 4/13). That's more evidence
   B2 is too loose.
@@ -294,8 +300,11 @@ the rule unsupported.
 every firm at once. This follow-up uses each firm's **own** lenders instead. Many oil and
 gas producers borrow under a credit line whose maximum (the **borrowing base**) the banks
 re-set about twice a year from the value of the firm's reserves, and firms must disclose
-when it's cut. Same 93 firms, same bankruptcy definition, same windows; only the lender
-measure changes.
+when it's cut. For example, Northern Oil and Gas's 10-Q of 2016-11-09 (accession
+0001104485-16-000105) describes a borrowing base "determined at the discretion of the
+lenders based on the collateral value of our proved reserves" and redetermined twice a
+year. Same 93 firms, same bankruptcy definition, same windows; only the lender measure
+changes.
 
 **Data.** 48,873 sentences mentioning "borrowing base," from 4,427 of these firms'
 10-K, 10-Q and 8-K filings (2012–2019, EDGAR full-text search). Every cut keeps its
@@ -311,7 +320,11 @@ samples of extracted cuts were read by hand:
   unclear. Below the 80% bar, so both versions are reported and no further tuning was
   done.
 - **Recall:** 1 of 10 documents without a detected cut contained one, phrased as
-  "established at $350 million." Misses like that can only weaken the signal.
+  "established at $350 million." A missed cut can bias the result either way: a miss
+  at a survivor removes a false alarm. The recall check was run for v1 only.
+- **The two precision checks aren't like-for-like.** The v1 sample was drawn from every
+  cut sentence (including retellings), the v2 sample from distinct cuts. Neither was
+  limited to the cuts that actually drive results; the audit in section 10 does that.
 
 **Results** (93 firms; bankruptcy = 8-K Item 1.03, 2013–2019):
 
@@ -321,26 +334,45 @@ samples of extracted cuts were read by hand:
 | P, rules v1 | 28/60 = 47% | 3/33 = 9% | 0.0002 | supported (pilot) |
 | **S1: own bank's cut alone, ignoring overspending (v2)** | **28/59 = 47%** | **3/34 = 9%** | 0.0001 | supported (pilot) |
 | S2: P, only firms that have a borrowing base (v2) | 25/51 = 49% | 5/26 = 19% | 0.014 | supported (pilot) |
-| S3: P, same window for everyone (v2) | 27/53 = 51% | 4/40 = 10% | <0.0001 | supported (pilot) |
+| S3: same window for everyone (v2; not a stricter P, since it can credit 2013–16 signals to 2019 bankruptcies) | 27/53 = 51% | 4/40 = 10% | <0.0001 | supported (pilot) |
 | S4: P, firms that stopped filing dropped (v2) | 25/42 = 60% | 6/31 = 19% | 0.0008 | supported (pilot) |
 | *Main test, national survey (for contrast)* | *22/74 = 30%* | *9/19 = 47%* | *0.18* | *not supported* |
 
 Full tables: `data/clean/bbase_results.csv`, `bbase_labels.csv`.
 
+**Audit: counting only hand-verified bank cuts** (added after the results, symmetric
+across bankrupt firms and survivors; section 10, `data/clean/bbase_signal_cut_review*.csv`):
+
+| Comparison | Bust rate with signal | Without signal | p | Reading |
+|---|---|---|---|---|
+| **P, only verified bank cuts** | **18/40 = 45%** | **13/53 = 25%** | 0.047 | supported (pilot), borderline |
+| S1 (cut alone), only verified bank cuts | 22/49 = 45% | 9/44 = 20% | 0.016 | supported (pilot) |
+| P, verified + unclear cuts | 20/44 = 45% | 11/49 = 22% | 0.027 | supported (pilot) |
+| S1, verified + unclear cuts | 24/53 = 45% | 7/40 = 18% | 0.007 | supported (pilot) |
+
 ![Own-bank cuts and bankruptcy](figures/bbase_bust_rates.png)
 
 **What it shows:**
-1. **The firm's own lenders pulling back is a strong warning sign.** It fires for about
-   half the firms, and about half of those went bankrupt, against 9–19% of the rest. The
-   first warning came a median of **7 quarters** before the bankruptcy (range 1–12).
+1. **The firm's own lenders pulling back is a warning sign, but weaker than the raw numbers
+   suggest.** With every detected cut, about half of signaled firms went bankrupt, against
+   9–19% of the rest. With only hand-verified bank cuts it's 45% vs 20–25% (p = 0.016–0.047).
+   Many of the reductions that were *not* bank decisions came from asset sales and similar
+   events, which are themselves signs of distress, and that inflated the raw result. The
+   first warning came a median of **7 quarters** before the bankruptcy (range 1–12; the
+   range is capped by the 12-quarter window).
 2. **The "spending more than cash flow" half of the rule adds nothing.** The cut alone
    (S1) does as well as the full rule (P). Every bankruptcy P caught, S1 also caught, and
-   S1 caught 3 more (Jones, Triangle, Alta Mesa) that P missed. Read with the
+   S1 caught 3 more (Jones, Triangle, Alta Mesa) that P missed. P can only catch what S1
+   catches, by construction. P had 5 fewer false alarms, and one of its 3 extra misses
+   (Alta Mesa) comes from a data gap rather than the overspending test. The audited
+   version shows the same thing: S1 is at least as good as P. Read with the
    pre-registered rule in RULE.md 7.5: **the banks' own judgment already contained the
    information, and the cash-flow gap added nothing to it.**
-3. **The measurement, not the idea, sank the main test.** The same firms over the same
-   years gave "not supported" with a national lender measure and "supported (pilot)"
-   with a firm-level one.
+3. **The lender measurement sank the main test, and the rule's distinctive overspending
+   condition still adds nothing.** The same firms over the same years gave "not supported"
+   with a national lender measure and "supported (pilot)" with a firm-level one. But the
+   part of the rule that is specifically about builders outspending their cash flow did no
+   work in either test.
 
 **What it does not show (please read):**
 - **Not cause and effect.** Banks cut credit for firms they already see as weak, so a cut
@@ -351,7 +383,10 @@ Full tables: `data/clean/bbase_results.csv`, `bbase_labels.csv`.
   and the extraction rules were revised after the first hand check (though before any
   result). It needs repeating on data the rules weren't built on, for example the 2020
   oil crash (follow-up #2).
-- **The measure is noisy:** 60–75% of v2 cuts are real lender cuts.
+- **The measure is noisy.** In the random v2 sample, 15 of 25 cuts (60%) were clearly
+  lender cuts: 75% if the unclear cases are set aside, 80% if they all count. With 25
+  checks that's roughly ±19 points. Among the 147 cuts that actually create signals, 96
+  (65%) were verified bank cuts, 35 were not, and 16 were unclear.
 - **Part of the gap is "type of borrower."** The 16 firms without a borrowing base are
   mostly the largest producers (median 2013 assets $14.9B, against $2.2B for firms with
   one: Occidental, Anadarko, Apache, Devon, EOG, Pioneer and others), and 15 of them
@@ -364,6 +399,52 @@ Full tables: `data/clean/bbase_results.csv`, `bbase_labels.csv`.
   reading, but the exact p-values shouldn't be taken literally.
 
 ![Cuts by quarter](figures/bbase_cuts_by_quarter.png)
+
+## 10. Audit of the whole study (after the follow-up)
+
+A full audit checked the sources behind the study as well as its numbers. Corrections
+are logged in CHANGELOG v1.6.
+
+**Sources and quotes, checked against the originals:**
+- **Dalio's essay** ("Principled Thinking and AI Need to Go Together," *Principled
+  Perspectives*, June 10, 2026). Title, author and date are confirmed, and the
+  description in RULE.md matches the text: he writes principles down from
+  cause-and-effect relationships, back-tests them, and says they are "not best derived"
+  by data mining. One wording fix: RULE.md now uses his "not best derived" rather than a
+  stronger paraphrase.
+- **The Forbes article** (Fiona Riley, Oct 7, 2026, the Forbes Global CEO Conference in
+  Singapore). The quoted fragment "usually pricks at that" appears word for word in
+  Dalio's quoted remark. Nothing else in the repo is attributed to Dalio. Applying the
+  idea to builders' cash flow and lending is stated as the author's own extension.
+- **The Fed survey.** The Fed's April 2026 survey page says it covers "the past three
+  months, which generally correspond to the first quarter of 2026." Its Table 1 gives
+  11.3% tightening − 3.2% easing = 8.1, exactly FRED's DRTSCILM value dated 2026-04-01.
+  So the quarter alignment in RULE.md 2.5 is right.
+- **The other sources.** FRED attributes WTI (`DCOILWTICO`) to the U.S. Energy
+  Information Administration. Former company names match EDGAR's records. The
+  Google/Alphabet and EPL facts are now cited to the companies' own filings.
+
+**The follow-up's numbers:** an independent re-computation matched every count, rate and
+p-value. It found no look-ahead: every cut behind a hit was public before the
+bankruptcy.
+
+**The follow-up's measure:** the audit's main finding. Five of the 25 primary hits rested
+only on reductions that were not bank decisions (for example, a cut triggered by a
+bridge loan, or one "after giving effect to the Proposed Distribution"). So every one of
+the 147 cuts that create a signal was judged by hand, under fixed criteria, for bankrupt
+firms and survivors alike. The company name and outcome were not shown during judging,
+though some sentences name the company. Results are in the audit table in section 9:
+the effect shrinks to 45% vs 25% (p = 0.047). Four real cuts were also first reported
+well after they happened (e.g. a 2013 cut in a 2015 10-K), so they carry a late date.
+
+**Other disclosures from the audit:**
+- The extraction code also counts "declined" and "cut," which RULE.md 7.2's verb list
+  doesn't name.
+- The v2 rules and their hand check were committed together, a few minutes before the
+  results, so the commit history alone can't prove the order. The CHANGELOG records it.
+- v2's "same amount = same cut" rule merged one pair of genuinely different cuts (Unit
+  Corp, 2018 and 2019). It changed no label; with a 270-day window instead, one more
+  bankruptcy (Approach) would have been caught.
 
 ---
 
@@ -382,10 +463,11 @@ Full tables: `data/clean/bbase_results.csv`, `bbase_labels.csv`.
    robustness variants plus their limits: one industry, one episode, and a bankruptcy
    measure that misses firms that deregistered first.
 
-*Optional follow-up sentence:* In a follow-up that read each firm's own bank credit cuts
-from 48,873 filing sentences, firms whose lenders cut them went bankrupt at 47% vs 9%,
-but the overspending condition added nothing beyond the bank's judgment, a predictive
-pattern, not proof of cause.
+*Optional follow-up sentence:* In a pre-registered follow-up that read each firm's own bank
+credit cuts from 48,873 filing sentences, firms whose lenders cut them went bankrupt more
+often: 45% vs 25% counting only hand-verified cuts (p ≈ 0.05), 49% vs 14% before
+verification. The overspending condition added nothing. A noisy pilot pattern, not proof
+of cause.
 
 *Optional alternative to sentence 3:* A mechanically chosen comparison boom (2011–14
 computer-services capex) showed the signal in 13% of firms and had no bankruptcies, vs
