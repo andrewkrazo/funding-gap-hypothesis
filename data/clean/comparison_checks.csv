@@ -1,0 +1,20 @@
+cik,entity_name,status,note,measurable_quarters_primary,measurable_quarters_preregistered,shortfall_flag_agreement_between_methods,double_count_flags,investing_flag_years
+1288776,Google Inc.,included,,11,11,1.0,0,0
+1326801,"Meta Platforms, Inc.",included,,16,16,1.0,0,0
+1329099,"BAIDU, INC.",excluded: insufficient data,no capex tags,0,0,,0,0
+1316360,IHS INC.,included,,14,14,1.0,0,0
+1597033,Sabre Corporation,included,,12,13,1.0,0,1
+891103,"MATCH GROUP, INC.",included,,16,16,1.0,0,0
+1418091,"Twitter, Inc.",included,,11,11,1.0,0,0
+1271024,LINKEDIN CORP,included,,15,15,1.0,0,0
+1324245,"SOLERA HOLDINGS, INC",included,,12,12,1.0,0,0
+1087423,RED HAT INC,included,,16,16,1.0,0,0
+1513845,YANDEX N.V.,excluded: insufficient data,no capex tags,0,0,,0,0
+906192,"SRA INTERNATIONAL, INC.",included,,8,10,1.0,0,0
+1107694,"RACKSPACE HOSTING, INC.",included,,15,15,1.0,0,0
+1526520,"TRIPADVISOR, INC.",included,,16,16,1.0,0,0
+1508475,"21VIANET GROUP, INC.",excluded: insufficient data,no capex tags,0,0,,0,0
+1102541,EARTHLINK HOLDINGS CORP.,included,,16,16,1.0,0,0
+1013237,FactSet Research Systems Inc.,included,,16,16,1.0,0,1
+1056386,Internap Corp,included,,16,16,1.0,0,1
+1595761,WEIBO CORPORATION,excluded: insufficient data,no capex tags,0,0,,0,0
